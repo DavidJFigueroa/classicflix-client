@@ -1,36 +1,40 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 
 export const MainView = () => {
-  const [movies, setMovies] = useState([
-    {
-      id: 1,
-      title: "North By Northwest",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Northbynorthwest1.jpg/440px-Northbynorthwest1.jpg",
-      author: "Alfred Hitchcock",
-      genre: "Thriller",
-    },
-    {
-      id: 2,
-      title: "Psycho",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Psycho_%281960%29_theatrical_poster_%28retouched%29.jpg/440px-Psycho_%281960%29_theatrical_poster_%28retouched%29.jpg",
-      author: "Alfred Hitchcock",
-      genre: "Horror",
-    },
-    {
-      id: 3,
-      title: "Vertigo",
-      image:
-        "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Vertigomovie_restoration.jpg/440px-Vertigomovie_restoration.jpg",
-      author: "Alfred Hitchcock",
-      genre: "Thriller",
-    },
-  ]);
+  const [movies, setMovies] = useState([]);
 
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  useEffect(() => {
+    fetch("https://myflix-database-api-9ba401fe0e70.herokuapp.com/movies")
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        const moviesFromApi = data.map((movie) => {
+          return {
+            _id: movie._id,
+            Title: movie.Title,
+            ImagePath: movie.ImagePath,
+            Description: movie.Description,
+            Genres: movie.Genres,
+            Genre: {
+              Name: movie.Genre.Name,
+            },
+            Director: {
+              Name: movie.Director.Name,
+            },
+            Featured: movie.Featured,
+          };
+        });
+
+        setMovies(moviesFromApi);
+      })
+      .catch((error) => {
+        console.log("Error fetching movies:", error);
+      });
+  }, []);
 
   if (selectedMovie) {
     return (
@@ -49,9 +53,9 @@ export const MainView = () => {
     <div>
       {movies.map((movie) => (
         <MovieCard
-          key={movie.id}
+          key={movie._id}
           movie={movie}
-          genre={movie.genre}
+          genre={movie.Genre}
           onMovieClick={(newSelectedMovie) =>
             setSelectedMovie(newSelectedMovie)
           }
