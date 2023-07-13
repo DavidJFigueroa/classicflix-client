@@ -27324,10 +27324,12 @@ const MainView = ()=>{
                     Description: movie.Description,
                     Genres: movie.Genres,
                     Genre: {
-                        Name: movie.Genre.Name
+                        Name: movie.Genre.Name,
+                        Description: movie.Genre.Description
                     },
                     Director: {
-                        Name: movie.Director.Name
+                        Name: movie.Director.Name,
+                        Description: movie.Director.Description
                     },
                     Featured: movie.Featured
                 };
@@ -27342,14 +27344,14 @@ const MainView = ()=>{
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 41,
+        lineNumber: 43,
         columnNumber: 7
     }, undefined);
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 49,
+        lineNumber: 51,
         columnNumber: 12
     }, undefined);
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -27359,12 +27361,12 @@ const MainView = ()=>{
                 onMovieClick: (newSelectedMovie)=>setSelectedMovie(newSelectedMovie)
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 55,
+                lineNumber: 57,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 53,
+        lineNumber: 55,
         columnNumber: 5
     }, undefined);
 };
@@ -27437,8 +27439,8 @@ _c = MovieCard;
 MovieCard.propTypes = {
     movie: (0, _propTypesDefault.default).shape({
         title: (0, _propTypesDefault.default).string,
-        image: (0, _propTypesDefault.default).string.isRequired,
-        author: (0, _propTypesDefault.default).string,
+        imagePath: (0, _propTypesDefault.default).string.isRequired,
+        director: (0, _propTypesDefault.default).string,
         genre: (0, _propTypesDefault.default).shape({
             name: "..."
         })
