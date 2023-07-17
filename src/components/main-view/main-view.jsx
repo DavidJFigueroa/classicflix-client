@@ -12,26 +12,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        const moviesFromApi = data.map((movie) => {
-          return {
-            _id: movie._id,
-            Title: movie.Title,
-            ImagePath: movie.ImagePath,
-            Description: movie.Description,
-            Genres: movie.Genres,
-            Genre: {
-              Name: movie.Genre.Name,
-              Description: movie.Genre.Description,
-            },
-            Director: {
-              Name: movie.Director.Name,
-              Description: movie.Director.Description,
-            },
-            Featured: movie.Featured,
-          };
-        });
-
-        setMovies(moviesFromApi);
+        setMovies(data);
       })
       .catch((error) => {
         console.log("Error fetching movies:", error);

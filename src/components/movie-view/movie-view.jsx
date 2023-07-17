@@ -1,5 +1,6 @@
 import React from "react";
 import {Route, Link, Routes, useNavigate} from "react-router-dom";
+import PropTypes from "prop-types";
 
 export const MovieView = ({movie, onBackClick}) => {
   return (
@@ -26,4 +27,9 @@ export const MovieView = ({movie, onBackClick}) => {
       <button onClick={onBackClick}>Back</button>
     </div>
   );
+};
+
+MovieView.propTypes = {
+  movie: PropTypes.array.isRequired,
+  onMovieClick: PropTypes.func.isRequired,
 };
