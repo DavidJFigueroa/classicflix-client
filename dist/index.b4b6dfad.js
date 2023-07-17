@@ -27423,12 +27423,12 @@ MovieCard.propTypes = {
         Title: (0, _propTypesDefault.default).string,
         ImagePath: (0, _propTypesDefault.default).string.isRequired,
         Director: (0, _propTypesDefault.default).shape({
-            Name: "...",
-            Description: "..."
+            Name: (0, _propTypesDefault.default).string,
+            Description: (0, _propTypesDefault.default).string
         }),
         Genre: (0, _propTypesDefault.default).shape({
-            Name: "...",
-            Description: "..."
+            Name: (0, _propTypesDefault.default).string,
+            Description: (0, _propTypesDefault.default).string
         })
     }).isRequired,
     onMovieClick: (0, _propTypesDefault.default).func.isRequired
@@ -28325,8 +28325,8 @@ const MovieView = ({ movie, onBackClick })=>{
 };
 _c = MovieView;
 MovieView.propTypes = {
-    movie: (0, _propTypesDefault.default).array.isRequired,
-    onMovieClick: (0, _propTypesDefault.default).func.isRequired
+    movie: (0, _propTypesDefault.default).object.isRequired,
+    onBackClick: (0, _propTypesDefault.default).func.isRequired
 };
 var _c;
 $RefreshReg$(_c, "MovieView");
