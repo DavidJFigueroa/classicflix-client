@@ -1,4 +1,5 @@
 import {useState} from "react";
+import PropTypes from "prop-types";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +17,7 @@ export const SignupView = () => {
       Birthday: birthday,
     };
 
-    fetch("https://myflix-database-api-9ba401fe0e70.herokuapp.com/movies", {
+    fetch("https://myflix-database-api-9ba401fe0e70.herokuapp.com/users", {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -74,4 +75,12 @@ export const SignupView = () => {
       <button type="submit">Submit</button>
     </form>
   );
+};
+
+SignupView.propTypes = {
+  username: PropTypes.string,
+  password: PropTypes.string,
+  email: PropTypes.string,
+  birthday: PropTypes.number,
+  onChange: PropTypes.func,
 };
