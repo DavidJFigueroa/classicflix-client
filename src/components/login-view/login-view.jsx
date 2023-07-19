@@ -62,6 +62,5 @@ export const LoginView = ({onLoggedIn}) => {
 };
 
 LoginView.propTypes = {
-  username: PropTypes.string,
-  password: PropTypes.string,
+  onLoggedIn: PropTypes.func,
 };

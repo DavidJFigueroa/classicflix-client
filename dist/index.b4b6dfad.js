@@ -34257,8 +34257,7 @@ const LoginView = ({ onLoggedIn })=>{
 _s(LoginView, "Lrw7JeD9zj6OUWhT/IH4OIvPKEk=");
 _c = LoginView;
 LoginView.propTypes = {
-    username: (0, _propTypesDefault.default).string,
-    password: (0, _propTypesDefault.default).string
+    onLoggedIn: (0, _propTypesDefault.default).func
 };
 var _c;
 $RefreshReg$(_c, "LoginView");

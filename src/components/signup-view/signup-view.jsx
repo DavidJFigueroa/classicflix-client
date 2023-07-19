@@ -78,9 +78,5 @@ export const SignupView = () => {
 };
 
 SignupView.propTypes = {
-  username: PropTypes.string,
-  password: PropTypes.string,
-  email: PropTypes.string,
-  birthday: PropTypes.number,
   onChange: PropTypes.func,
 };
