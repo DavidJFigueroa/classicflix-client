@@ -3,6 +3,7 @@ import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 import {LoginView} from "../login-view/login-view";
 import {SignupView} from "../signup-view/signup-view";
+import {NavigationBar} from "../nav-bar/nav-bar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -15,6 +16,12 @@ export const MainView = () => {
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+
+  const handleLogout = () => {
+    setUser(null);
+    setToken(null);
+    localStorage.clear();
+  };
 
   useEffect(() => {
     if (!token) {
@@ -37,7 +44,12 @@ export const MainView = () => {
   return (
     <Row>
       <>
-        {" "}
+        <NavigationBar
+          user={user}
+          onLoggedOut={handleLogout}
+          movies={movies}
+          setMovies={setMovies}
+        />
         {!user ? (
           <>
             <Col md={5}>
@@ -52,7 +64,7 @@ export const MainView = () => {
             </Col>
           </>
         ) : selectedMovie ? (
-          <Col md={8}>
+          <Col md={12}>
             <MovieView
               movie={selectedMovie}
               onBackClick={() => setSelectedMovie(null)}
@@ -64,7 +76,13 @@ export const MainView = () => {
           <>
             <>
               {movies.map((movie) => (
-                <Col className="mb-5" key={movie._id} md={3}>
+                <Col
+                  className="mb-5"
+                  xs={7}
+                  sm={6}
+                  md={4}
+                  lg={3}
+                  key={movie._id}>
                   <MovieCard
                     key={movie._id}
                     movie={movie}
@@ -75,20 +93,6 @@ export const MainView = () => {
                 </Col>
               ))}
             </>
-            <Row>
-              <Col style={{textAlign: "center"}}>
-                <Button
-                  variant="primary"
-                  id="logoutbutton"
-                  onClick={() => {
-                    setUser(null);
-                    setToken(null);
-                    localStorage.clear();
-                  }}>
-                  Logout
-                </Button>
-              </Col>
-            </Row>
           </>
         )}
       </>

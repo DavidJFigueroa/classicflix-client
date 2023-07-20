@@ -6,61 +6,63 @@ import "./movie-view.scss";
 
 export const MovieView = ({movie, onBackClick}) => {
   return (
-    <Row>
-      <Card>
+    <Container>
+      <Row className="justify-content-md-center">
         <Col>
-          <Col>
-            <Card.Img
-              className="d-block mx-auto img-fluid"
-              id="movie-img"
-              src={movie.ImagePath}
-              alt="movie-img"
-            />
-          </Col>
-          <Col>
-            <div style={{textAlign: "center"}}>
-              <span>
-                <b>
-                  <i>Title:</i>
-                </b>
-              </span>
-              <span>{movie.Title}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                <b>
-                  <i>Description:</i>
-                </b>
-              </span>
-              <span>{movie.Description}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                {" "}
-                <b>
-                  <i>Director:</i>
-                </b>
-              </span>
-              <span>{movie.Director.Name}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                {" "}
-                <b>
-                  <i>Genre:</i>
-                </b>
-              </span>
-              <span>{movie.Genre.Name}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <Button id="backbutton" onClick={onBackClick}>
-                Back
-              </Button>
-            </div>
-          </Col>
+          <Card>
+            <Col>
+              <Card.Img
+                className="d-block mx-auto"
+                id="movie-img"
+                src={movie.ImagePath}
+                alt="movie-img"
+              />
+            </Col>
+            <Col>
+              <div style={{textAlign: "center"}}>
+                <span>
+                  <b>
+                    <i>Title: </i>
+                  </b>
+                </span>
+                <span>{movie.Title}</span>
+              </div>
+              <div id="div-description" style={{textAlign: "center"}}>
+                <span>
+                  <b>
+                    <i>Description: </i>
+                  </b>
+                </span>
+                <span>{movie.Description}</span>
+              </div>
+              <div style={{textAlign: "center"}}>
+                <span>
+                  {" "}
+                  <b>
+                    <i>Director: </i>
+                  </b>
+                </span>
+                <span>{movie.Director.Name}</span>
+              </div>
+              <div style={{textAlign: "center"}}>
+                <span>
+                  {" "}
+                  <b>
+                    <i>Genre: </i>
+                  </b>
+                </span>
+                <span>{movie.Genre.Name}</span>
+              </div>
+              <div style={{textAlign: "center"}}>
+                <Button id="backbutton" onClick={onBackClick}>
+                  Back
+                </Button>
+              </div>
+            </Col>
+          </Card>
         </Col>
-      </Card>
-    </Row>
+      </Row>
+    </Container>
   );
 };
 
