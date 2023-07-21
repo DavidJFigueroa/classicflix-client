@@ -1,14 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 import "./movie-view.scss";
 
 export const MovieView = ({movies}) => {
-  const {movieId} = useParams();
-  const movie = movies.find((m) => m._id === movieId);
+  const {movieID} = useParams();
+  const movie = movies.find((m) => m._id === movieID);
 
   return (
     <Container>
