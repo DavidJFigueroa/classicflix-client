@@ -1,10 +1,15 @@
 import React from "react";
-import {Route, Link, Routes, useNavigate} from "react-router-dom";
-import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
+import {useParams} from "react-router";
+// import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
+
 import "./movie-view.scss";
 
-export const MovieView = ({movie, onBackClick}) => {
+export const MovieView = ({movies}) => {
+  const {movieId} = useParams();
+  const movie = movies.find((m) => m._id === movieId);
+
   return (
     <Container>
       <Row className="justify-content-md-center">
@@ -54,9 +59,9 @@ export const MovieView = ({movie, onBackClick}) => {
                 <span>{movie.Genre.Name}</span>
               </div>
               <div style={{textAlign: "center"}}>
-                <Button id="backbutton" onClick={onBackClick}>
-                  Back
-                </Button>
+                <Link to={"/"}>
+                  <Button id="backbutton">Back</Button>
+                </Link>
               </div>
             </Col>
           </Card>
@@ -66,19 +71,18 @@ export const MovieView = ({movie, onBackClick}) => {
   );
 };
 
-MovieView.propTypes = {
-  movie: PropTypes.shape({
-    Title: PropTypes.string,
-    ImagePath: PropTypes.string,
-    Description: PropTypes.string,
-    Director: PropTypes.shape({
-      Name: PropTypes.string,
-      Description: PropTypes.string,
-    }),
-    Genre: PropTypes.shape({
-      Name: PropTypes.string,
-      Description: PropTypes.string,
-    }),
-  }).isRequired,
-  onBackClick: PropTypes.func,
-};
+// MovieView.propTypes = {
+//   movie: PropTypes.shape({
+//     Title: PropTypes.string,
+//     ImagePath: PropTypes.string,
+//     Description: PropTypes.string,
+//     Director: PropTypes.shape({
+//       Name: PropTypes.string,
+//       Description: PropTypes.string,
+//     }),
+//     Genre: PropTypes.shape({
+//       Name: PropTypes.string,
+//       Description: PropTypes.string,
+//     }),
+//   }),
+// };
