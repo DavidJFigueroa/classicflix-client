@@ -4,6 +4,7 @@ import {MovieView} from "../movie-view/movie-view";
 import {LoginView} from "../login-view/login-view";
 import {SignupView} from "../signup-view/signup-view";
 import {NavigationBar} from "../nav-bar/nav-bar";
+import {ProfileView} from "../profile-view/profile-view";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
@@ -33,6 +34,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
+
         setMovies(data);
       })
       .catch((error) => {
@@ -85,7 +87,7 @@ export const MainView = () => {
             }
           />
           <Route
-            path="/movies/:movieId"
+            path="/movies/:movieID"
             element={
               <>
                 {!user ? (
@@ -122,6 +124,26 @@ export const MainView = () => {
                       </Col>
                     ))}
                   </>
+                )}
+              </>
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              <>
+                {user ? (
+                  <Col>
+                    <ProfileView
+                      // user={user}
+                      // favoriteMovieList={favoriteMovieList}
+                      token={token}
+                      movies={movies}
+                      // favoriteMovies={favoriteMovie}
+                    />
+                  </Col>
+                ) : (
+                  <Navigate to="/login" replace />
                 )}
               </>
             }
