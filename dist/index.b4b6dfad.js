@@ -2947,8 +2947,8 @@ var _client = require("react-dom/client");
 var _mainView = require("./components/main-view/main-view");
 var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
-var _mdbMinCss = require("mdb-react-ui-kit/dist/css/mdb.min.css");
-var _allMinCss = require("@fortawesome/fontawesome-free/css/all.min.css");
+// import "mdb-react-ui-kit/dist/css/mdb.min.css";
+// import "@fortawesome/fontawesome-free/css/all.min.css";
 var _indexScss = require("./index.scss");
 // Main component (will eventually use all the others)
 const MyFlixApplication = ()=>{
@@ -2982,7 +2982,7 @@ $RefreshReg$(_c, "MyFlixApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","mdb-react-ui-kit/dist/css/mdb.min.css":"axeh6","@fortawesome/fontawesome-free/css/all.min.css":"c1Qzz"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./index.scss":"lJZlQ","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","./components/main-view/main-view":"4gflv","react-bootstrap/Container":"hEdsw","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -51315,12 +51315,13 @@ var _navbarDefault = parcelHelpers.interopDefault(_navbar);
 var _offcanvas = require("react-bootstrap/Offcanvas");
 var _offcanvasDefault = parcelHelpers.interopDefault(_offcanvas);
 var _reactRouterDom = require("react-router-dom");
+var _mdbReactUiKit = require("mdb-react-ui-kit");
 const NavigationBar = ({ user, onLoggedOut })=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
         children: [
             false
         ].map((expand)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
-                bg: "light",
+                bg: "dark",
                 expand: expand,
                 className: "bg-body-tertiary mb-3",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
@@ -51332,14 +51333,14 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                             children: "Classic Flix"
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 17,
+                            lineNumber: 18,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
                             "aria-controls": `offcanvasNavbar-expand-${expand}`
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 20,
+                            lineNumber: 21,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Offcanvas, {
@@ -51354,12 +51355,12 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Menu"
                                     }, void 0, false, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                        lineNumber: 26,
+                                        lineNumber: 27,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                                    lineNumber: 25,
+                                    lineNumber: 26,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
@@ -51374,7 +51375,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Login"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 34,
+                                                        lineNumber: 35,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -51383,7 +51384,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Signup"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 37,
+                                                        lineNumber: 38,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
@@ -51396,7 +51397,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Home"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 45,
+                                                        lineNumber: 46,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -51405,7 +51406,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "My Profile"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 48,
+                                                        lineNumber: 49,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -51413,7 +51414,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Logout"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 51,
+                                                        lineNumber: 52,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
@@ -51421,29 +51422,29 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                        lineNumber: 31,
+                                        lineNumber: 32,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                                    lineNumber: 30,
+                                    lineNumber: 31,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 21,
+                            lineNumber: 22,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                    lineNumber: 16,
+                    lineNumber: 17,
                     columnNumber: 11
                 }, undefined)
             }, expand, false, {
                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                lineNumber: 11,
+                lineNumber: 12,
                 columnNumber: 9
             }, undefined))
     }, void 0, false);
@@ -51457,7 +51458,7 @@ $RefreshReg$(_c, "NavigationBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","react-bootstrap/Container":"hEdsw","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-bootstrap/Offcanvas":"eC3RS","react-router-dom":"9xmpe"}],"2vVqf":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","react-bootstrap/Container":"hEdsw","react-bootstrap/Nav":"cXyL2","react-bootstrap/Navbar":"1mHjo","react-bootstrap/Offcanvas":"eC3RS","react-router-dom":"9xmpe","mdb-react-ui-kit":"aJUlQ"}],"2vVqf":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$3c12 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -51844,6 +51845,6 @@ $RefreshReg$(_c, "ProfileView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","../movie-card/movie-card":"bwuIu"}],"axeh6":[function() {},{}],"c1Qzz":[function() {},{}]},["9kujA","dGocb","d8Dch"], "d8Dch", "parcelRequirea9e5")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap":"3AD9A","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","../movie-card/movie-card":"bwuIu"}]},["9kujA","dGocb","d8Dch"], "d8Dch", "parcelRequirea9e5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

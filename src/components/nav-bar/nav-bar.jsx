@@ -3,13 +3,14 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {Link} from "react-router-dom";
+import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
 
 export const NavigationBar = ({user, onLoggedOut}) => {
   return (
     <>
       {[false].map((expand) => (
         <Navbar
-          bg="light"
+          bg="dark"
           key={expand}
           expand={expand}
           className="bg-body-tertiary mb-3">
