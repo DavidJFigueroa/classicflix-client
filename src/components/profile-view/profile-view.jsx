@@ -2,13 +2,7 @@ import {useState} from "react";
 import {MovieCard} from "../movie-card/movie-card";
 import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
 
-export const ProfileView = ({
-  user,
-  setUser,
-  token,
-  movies,
-  favoriteMoviesList,
-}) => {
+export const ProfileView = ({user, setUser, token, movies}) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
@@ -45,6 +39,42 @@ export const ProfileView = ({
           window.location.reload();
         } else {
           alert("User info update failed");
+        }
+      })
+      .then((user) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        setUser(user);
+      });
+  };
+
+  const handleSubmitDeregister = (event) => {
+    event.preventDefault();
+
+    const data = {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday,
+    };
+
+    fetch(
+      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}`,
+      {
+        method: "DELETE",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Deregister successful");
+          window.location.replace("/login");
+          loggedOut();
+        } else {
+          alert("Deregister failed");
         }
       })
       .then((user) => {
@@ -147,6 +177,11 @@ export const ProfileView = ({
             </Col>
           ))}
         </Col>
+      </Row>
+      <Row>
+        <Button variant="primary" onClick={handleSubmitDeregister}>
+          Delete Account
+        </Button>
       </Row>
     </Container>
   );

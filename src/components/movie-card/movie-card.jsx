@@ -37,6 +37,34 @@ export const MovieCard = ({movie, user, setUser, token}) => {
       });
   };
 
+  const removeFavorite = (event) => {
+    event.preventDefault();
+
+    fetch(
+      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Removed from favorites");
+          response.json();
+          window.location.reload();
+        } else {
+          alert("Could not be removed");
+        }
+      })
+      .then((user) => {
+        setUser(user);
+        setIsFavorite(false);
+      });
+  };
+
   return (
     <Card className="h-100">
       <div style={{textAlign: "center"}}>
@@ -44,15 +72,29 @@ export const MovieCard = ({movie, user, setUser, token}) => {
       </div>
       <div style={{textAlign: "center"}}>
         <Card.Body>
-          <MDBBtn
-            onClick={addToFavorite}
-            className="mx-2"
-            tag="a"
-            color="success"
-            outline
-            floating>
-            <MDBIcon fas icon="star" />{" "}
-          </MDBBtn>
+          <div>
+            {user.FavoriteMovies.includes(movie._id) ? (
+              <MDBBtn
+                onClick={removeFavorite}
+                className="mx-2"
+                tag="a"
+                color="success"
+                outline
+                floating>
+                <MDBIcon fas icon="minus" />{" "}
+              </MDBBtn>
+            ) : (
+              <MDBBtn
+                onClick={addToFavorite}
+                className="mx-2"
+                tag="a"
+                color="success"
+                outline
+                floating>
+                <MDBIcon fas icon="star" />{" "}
+              </MDBBtn>
+            )}
+          </div>
 
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Director.Name}</Card.Text>
