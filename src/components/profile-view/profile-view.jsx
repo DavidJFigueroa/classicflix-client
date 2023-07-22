@@ -1,27 +1,24 @@
 import {useState} from "react";
-// import PropTypes from "prop-types";
-import {
-  Button,
-  Form,
-  Row,
-  Container,
-  Card,
-  CardGroup,
-  Col,
-} from "react-bootstrap";
 import {MovieCard} from "../movie-card/movie-card";
+import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
 
-export const ProfileView = ({user, token, movies}) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [email, setEmail] = useState("");
-  const [birthday, setBirthday] = useState("");
+export const ProfileView = ({
+  user,
+  setUser,
+  token,
+  movies,
+  favoriteMoviesList,
+}) => {
+  const [username, setUsername] = useState(user.Username);
+  const [password, setPassword] = useState(user.Password);
+  const [email, setEmail] = useState(user.Email);
+  const [birthday, setBirthday] = useState(user.Birthday);
 
-  const favoriteMovies = movies.filter((movie) => {
+  const result = movies.filter((movie) => {
     return user.FavoriteMovies.includes(movie._id);
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmitUpdate = (event) => {
     event.preventDefault();
 
     const data = {
@@ -32,7 +29,7 @@ export const ProfileView = ({user, token, movies}) => {
     };
 
     fetch(
-      "https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}",
+      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}`,
       {
         method: "PUT",
         body: JSON.stringify(data),
@@ -50,8 +47,9 @@ export const ProfileView = ({user, token, movies}) => {
           alert("User info update failed");
         }
       })
-      .then((data) => {
+      .then((user) => {
         localStorage.setItem("user", JSON.stringify(data));
+        setUser(user);
       });
   };
 
@@ -82,7 +80,7 @@ export const ProfileView = ({user, token, movies}) => {
         <Card>
           <Card.Body>
             <Card.Title> Update your info</Card.Title>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmitUpdate}>
               <Form.Group controlId="formUsername">
                 <Form.Label>
                   Username:
@@ -142,7 +140,8 @@ export const ProfileView = ({user, token, movies}) => {
       <Row>
         <Col>
           <h3>Favorite Movies:</h3>
-          {favoriteMovies.map((movie) => (
+
+          {result.map((movie) => (
             <Col className="mb-5" xs={7} sm={6} md={4} lg={3} key={movie._id}>
               <MovieCard key={movie._id} movie={movie} />
             </Col>

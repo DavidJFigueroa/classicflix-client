@@ -120,7 +120,13 @@ export const MainView = () => {
                         md={4}
                         lg={3}
                         key={movie._id}>
-                        <MovieCard key={movie._id} movie={movie} />
+                        <MovieCard
+                          key={movie._id}
+                          movie={movie}
+                          user={user}
+                          setUser={setUser}
+                          token={token}
+                        />
                       </Col>
                     ))}
                   </>
@@ -135,8 +141,8 @@ export const MainView = () => {
                 {user ? (
                   <Col>
                     <ProfileView
-                      // user={user}
-                      // favoriteMovieList={favoriteMovieList}
+                      user={user}
+                      setUser={setUser}
                       token={token}
                       movies={movies}
                       // favoriteMovies={favoriteMovie}

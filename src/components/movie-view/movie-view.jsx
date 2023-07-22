@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router";
-// import PropTypes from "prop-types";
+import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 import "./movie-view.scss";
@@ -71,18 +71,18 @@ export const MovieView = ({movies}) => {
   );
 };
 
-// MovieView.propTypes = {
-//   movie: PropTypes.shape({
-//     Title: PropTypes.string,
-//     ImagePath: PropTypes.string,
-//     Description: PropTypes.string,
-//     Director: PropTypes.shape({
-//       Name: PropTypes.string,
-//       Description: PropTypes.string,
-//     }),
-//     Genre: PropTypes.shape({
-//       Name: PropTypes.string,
-//       Description: PropTypes.string,
-//     }),
-//   }),
-// };
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string,
+    ImagePath: PropTypes.string,
+    Description: PropTypes.string,
+    Director: PropTypes.shape({
+      Name: PropTypes.string,
+      Description: PropTypes.string,
+    }),
+    Genre: PropTypes.shape({
+      Name: PropTypes.string,
+      Description: PropTypes.string,
+    }),
+  }),
+};
