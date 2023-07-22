@@ -13199,6 +13199,10 @@ img {
   max-height: 365px;
 }
 
+button {
+  margin-bottom: 10px;
+}
+
 #movie-img {
   padding: 20px;
 }

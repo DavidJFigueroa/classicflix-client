@@ -76,7 +76,7 @@ export const MainView = () => {
                 ) : (
                   <Col md={5}>
                     <LoginView
-                      onLoggedIn={(user) => {
+                      onLoggedIn={(user, token) => {
                         setUser(user);
                         setToken(token);
                       }}
@@ -145,7 +145,6 @@ export const MainView = () => {
                       setUser={setUser}
                       token={token}
                       movies={movies}
-                      // favoriteMovies={favoriteMovie}
                     />
                   </Col>
                 ) : (
