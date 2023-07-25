@@ -11,7 +11,9 @@ import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import "./main-view.scss";
 
 export const MainView = () => {
-  const storedUser = JSON.parse(localStorage.getItem("user"));
+  const storedUser = localStorage.getItem("user")
+    ? JSON.parse(localStorage.getItem("user"))
+    : null;
   const storedToken = localStorage.getItem("token");
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
@@ -42,11 +44,9 @@ export const MainView = () => {
       });
   }, [token]);
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState();
 
-  const addToFavorite = (event, movie) => {
-    event.preventDefault();
-
+  const addToFavorite = (movie) => {
     fetch(
       `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
       {
@@ -61,20 +61,17 @@ export const MainView = () => {
         if (response.ok) {
           alert("Added to favorites");
           response.json();
-          window.location.reload();
         } else {
           alert("Could not be added");
         }
       })
       .then((user) => {
         setUser(user);
-        setIsFavorite((isFavorite) => !isFavorite);
+        setIsFavorite(true);
       });
   };
 
-  const removeFavorite = (event) => {
-    event.preventDefault();
-
+  const removeFavorite = (movie) => {
     fetch(
       `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
       {
@@ -181,11 +178,14 @@ export const MainView = () => {
                         <MovieCard
                           key={movie._id}
                           movie={movie}
+                          movies={movies}
                           user={user}
                           setUser={setUser}
-                          token={token}
+                          // token={token}
                           addToFavorite={addToFavorite}
                           removeFavorite={removeFavorite}
+                          // favoriteMovie={favoriteMovie}
+                          isFavorite={isFavorite}
                         />
                       </Col>
                     ))}
