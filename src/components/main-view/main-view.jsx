@@ -15,6 +15,7 @@ export const MainView = () => {
     ? JSON.parse(localStorage.getItem("user"))
     : null;
   const storedToken = localStorage.getItem("token");
+
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
   const [movies, setMovies] = useState([]);
@@ -44,7 +45,7 @@ export const MainView = () => {
       });
   }, [token]);
 
-  const [isFavorite, setIsFavorite] = useState();
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const addToFavorite = (movie) => {
     fetch(
@@ -66,8 +67,11 @@ export const MainView = () => {
         }
       })
       .then((user) => {
-        setUser(user);
-        setIsFavorite(true);
+        if (user) {
+          setUser(user);
+          localStorage.setItem("user", JSON.stringify(result));
+          setIsFavorite(true);
+        }
       });
   };
 
@@ -93,6 +97,7 @@ export const MainView = () => {
       })
       .then((user) => {
         setUser(user);
+        localStorage.setItem("user", JSON.stringify(result));
         setIsFavorite(false);
       });
   };
