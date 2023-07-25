@@ -4,12 +4,7 @@ import {Button, Card} from "react-bootstrap";
 import "./movie-card.scss";
 import {Link} from "react-router-dom";
 
-export const MovieCard = ({
-  movie,
-  isFavorite,
-  removeFavorite,
-  addToFavorite,
-}) => {
+export const MovieCard = ({movie, user, removeFavorite, addToFavorite}) => {
   return (
     <Card className="h-100">
       <div style={{textAlign: "center"}}>
@@ -18,7 +13,7 @@ export const MovieCard = ({
       <div style={{textAlign: "center"}}>
         <Card.Body>
           <div>
-            {isFavorite ? (
+            {user.FavoriteMovies.includes(movie._id) ? (
               <Button
                 type="button"
                 className="btn btn-secondary"

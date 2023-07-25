@@ -173,7 +173,7 @@ export const ProfileView = ({user, setUser, token, movies}) => {
 
           {result.map((movie) => (
             <Col className="mb-5" xs={7} sm={6} md={4} lg={3} key={movie._id}>
-              <MovieCard key={movie._id} movie={movie} />
+              <MovieCard key={movie._id} movie={movie} user={user} />
             </Col>
           ))}
         </Col>

@@ -181,11 +181,8 @@ export const MainView = () => {
                           movies={movies}
                           user={user}
                           setUser={setUser}
-                          // token={token}
                           addToFavorite={addToFavorite}
                           removeFavorite={removeFavorite}
-                          // favoriteMovie={favoriteMovie}
-                          isFavorite={isFavorite}
                         />
                       </Col>
                     ))}
