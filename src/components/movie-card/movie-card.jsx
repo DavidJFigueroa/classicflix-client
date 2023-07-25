@@ -6,65 +6,7 @@ import {Link} from "react-router-dom";
 
 import {useState, useEffect} from "react";
 
-export const MovieCard = ({movie, user, setUser, token}) => {
-  const [isFavorite, setIsFavorite] = useState(false);
-
-  const addToFavorite = (event) => {
-    event.preventDefault();
-
-    fetch(
-      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert("Added to favorites");
-          response.json();
-          window.location.reload();
-        } else {
-          alert("Could not be added");
-        }
-      })
-      .then((user) => {
-        setUser(user);
-        setIsFavorite((isFavorite) => !isFavorite);
-      });
-  };
-
-  const removeFavorite = (event) => {
-    event.preventDefault();
-
-    fetch(
-      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
-      {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert("Removed from favorites");
-          response.json();
-          window.location.reload();
-        } else {
-          alert("Could not be removed");
-        }
-      })
-      .then((user) => {
-        setUser(user);
-        setIsFavorite(false);
-      });
-  };
-
+export const MovieCard = ({movie, user, removeFavorite, addToFavorite}) => {
   return (
     <Card className="h-100">
       <div style={{textAlign: "center"}}>

@@ -42,6 +42,64 @@ export const MainView = () => {
       });
   }, [token]);
 
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  const addToFavorite = (event, movie) => {
+    event.preventDefault();
+
+    fetch(
+      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Added to favorites");
+          response.json();
+          window.location.reload();
+        } else {
+          alert("Could not be added");
+        }
+      })
+      .then((user) => {
+        setUser(user);
+        setIsFavorite((isFavorite) => !isFavorite);
+      });
+  };
+
+  const removeFavorite = (event) => {
+    event.preventDefault();
+
+    fetch(
+      `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}/movies/${movie._id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    )
+      .then((response) => {
+        if (response.ok) {
+          alert("Removed from favorites");
+          response.json();
+          window.location.reload();
+        } else {
+          alert("Could not be removed");
+        }
+      })
+      .then((user) => {
+        setUser(user);
+        setIsFavorite(false);
+      });
+  };
+
   return (
     <BrowserRouter>
       <Row>
@@ -126,6 +184,8 @@ export const MainView = () => {
                           user={user}
                           setUser={setUser}
                           token={token}
+                          addToFavorite={addToFavorite}
+                          removeFavorite={removeFavorite}
                         />
                       </Col>
                     ))}
