@@ -67,11 +67,9 @@ export const MainView = () => {
         }
       })
       .then((user) => {
-        if (user) {
-          setUser(user);
-          localStorage.setItem("user", JSON.stringify(result));
-          setIsFavorite(true);
-        }
+        setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        setIsFavorite(true);
       });
   };
 
@@ -97,7 +95,7 @@ export const MainView = () => {
       })
       .then((user) => {
         setUser(user);
-        localStorage.setItem("user", JSON.stringify(result));
+        localStorage.setItem("user", JSON.stringify(user));
         setIsFavorite(false);
       });
   };
@@ -207,6 +205,7 @@ export const MainView = () => {
                       setUser={setUser}
                       token={token}
                       movies={movies}
+                      removeFavorite={removeFavorite}
                     />
                   </Col>
                 ) : (
