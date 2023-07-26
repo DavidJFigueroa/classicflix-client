@@ -2,6 +2,7 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {MovieCard} from "../movie-card/movie-card";
+import PropTypes from "prop-types";
 
 export function FavoriteMovies({movies, user, removeFavorite}) {
   const result = movies.filter((m) => {
@@ -31,3 +32,9 @@ export function FavoriteMovies({movies, user, removeFavorite}) {
     </>
   );
 }
+
+FavoriteMovies.PropTypes = {
+  movies: PropTypes.object,
+  user: PropTypes.object,
+  removeFavorite: PropTypes.func,
+};

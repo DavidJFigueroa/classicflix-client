@@ -1,5 +1,6 @@
 import React from "react";
-import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
+import PropTypes from "prop-types";
+import {Button, Card} from "react-bootstrap";
 
 export function UserInfo({email, name, handleSubmitDeregister}) {
   return (
@@ -23,3 +24,9 @@ export function UserInfo({email, name, handleSubmitDeregister}) {
     </>
   );
 }
+
+UserInfo.PropTypes = {
+  email: PropTypes.string,
+  name: PropTypes.string,
+  handleSubmitDeregister: PropTypes.func,
+};

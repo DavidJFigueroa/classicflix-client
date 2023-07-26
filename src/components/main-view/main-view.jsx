@@ -203,7 +203,7 @@ export const MainView = () => {
                       token={token}
                       movies={movies}
                       removeFavorite={removeFavorite}
-                      onLoggedOut={handleLogout}
+                      handleLogout={handleLogout}
                     />
                   </Col>
                 ) : (

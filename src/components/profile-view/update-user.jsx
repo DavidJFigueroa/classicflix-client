@@ -1,7 +1,14 @@
 import React from "react";
 import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
 
-export function UpdateUser({handleSubmitUpdate, user}) {
+export function UpdateUser({
+  handleSubmitUpdate,
+  user,
+  setUsername,
+  setEmail,
+  setPassword,
+  setBirthday,
+}) {
   return (
     <Card>
       <Card.Body>
@@ -15,7 +22,7 @@ export function UpdateUser({handleSubmitUpdate, user}) {
                   Username:
                   <Form.Control
                     type="text"
-                    value={user.Username}
+                    placeholder={user.Username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
                     minLength="3"
@@ -30,7 +37,7 @@ export function UpdateUser({handleSubmitUpdate, user}) {
                   Password:
                   <Form.Control
                     type="password"
-                    value={user.Password}
+                    placeholder={user.Password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                   />
@@ -46,7 +53,7 @@ export function UpdateUser({handleSubmitUpdate, user}) {
                   Email:
                   <Form.Control
                     type="email"
-                    value={user.Email}
+                    placeholder={user.Email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                   />
@@ -59,7 +66,7 @@ export function UpdateUser({handleSubmitUpdate, user}) {
                   Birthday:
                   <Form.Control
                     type="date"
-                    value={user.Birthday}
+                    placeholder={user.Birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                     required
                   />
@@ -76,3 +83,8 @@ export function UpdateUser({handleSubmitUpdate, user}) {
     </Card>
   );
 }
+
+UpdateUser.PropTypes = {
+  user: PropTypes.object,
+  handleSubmitUpdate: PropTypes.func,
+};

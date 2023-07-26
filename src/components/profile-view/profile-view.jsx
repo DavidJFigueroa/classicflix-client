@@ -1,11 +1,18 @@
 import {useState} from "react";
-
+import PropTypes from "prop-types";
 import {UserInfo} from "./user-info";
 import {FavoriteMovies} from "./favorite-movies";
 import {UpdateUser} from "./update-user";
 import {Row, Container, Col} from "react-bootstrap";
 
-export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
+export const ProfileView = ({
+  user,
+  setUser,
+  token,
+  movies,
+  removeFavorite,
+  handleLogout,
+}) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
@@ -46,9 +53,7 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
       });
   };
 
-  const handleSubmitDeregister = (event, onLoggedOut) => {
-    event.preventDefault();
-
+  const handleSubmitDeregister = () => {
     const data = {
       Username: username,
       Password: password,
@@ -60,7 +65,6 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
       `https://myflix-database-api-9ba401fe0e70.herokuapp.com/users/${user.Username}`,
       {
         method: "DELETE",
-        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
@@ -68,9 +72,8 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
       }
     ).then((response) => {
       if (response.ok) {
-        alert("Deregister succesful");
+        handleLogout();
         window.location.replace("/signup");
-        onLoggedOut();
       } else {
         alert("Deregister failed");
       }
@@ -90,7 +93,14 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
         </Col>
         <Col xs={12} sm={6}>
           {" "}
-          <UpdateUser handleSubmitUpdate={handleSubmitUpdate} user={user} />
+          <UpdateUser
+            handleSubmitUpdate={handleSubmitUpdate}
+            user={user}
+            setUsername={setUsername}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            setBirthday={setBirthday}
+          />
         </Col>
       </Row>
       <Row>
@@ -104,4 +114,12 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
       </Row>
     </Container>
   );
+};
+
+ProfileView.PropTypes = {
+  movies: PropTypes.object,
+  user: PropTypes.object,
+  token: PropTypes.string,
+  removeFavorite: PropTypes.func,
+  handleLogout: PropTypes.func,
 };

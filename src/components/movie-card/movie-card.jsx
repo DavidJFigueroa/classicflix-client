@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 import "./movie-card.scss";
 
@@ -69,5 +68,12 @@ MovieCard.propTypes = {
     Genre: PropTypes.shape({
       Name: PropTypes.string,
     }),
-  }).isRequired,
+  }),
+  user: PropTypes.shape({
+    Username: PropTypes.string,
+    Email: PropTypes.string,
+    FavoriteMovies: PropTypes.string,
+  }),
+  removeFavorite: PropTypes.func,
+  addToFavorite: PropTypes.func,
 };
