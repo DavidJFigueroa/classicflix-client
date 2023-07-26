@@ -5,14 +5,7 @@ import {FavoriteMovies} from "./favorite-movies";
 import {UpdateUser} from "./update-user";
 import {Row, Container, Col} from "react-bootstrap";
 
-export const ProfileView = ({
-  user,
-  setUser,
-  token,
-  movies,
-  removeFavorite,
-  movie,
-}) => {
+export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
@@ -53,7 +46,7 @@ export const ProfileView = ({
       });
   };
 
-  const handleSubmitDeregister = (event,  onLoggedOut) => {
+  const handleSubmitDeregister = (event, onLoggedOut) => {
     event.preventDefault();
 
     const data = {
@@ -75,15 +68,14 @@ export const ProfileView = ({
       }
     ).then((response) => {
       if (response.ok) {
-        alert ("Deregister succesful");
+        alert("Deregister succesful");
         window.location.replace("/signup");
         onLoggedOut();
       } else {
         alert("Deregister failed");
       }
     });
-
- 
+  };
 
   return (
     <Container>
