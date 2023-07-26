@@ -1,16 +1,22 @@
 import {useState} from "react";
-import {MovieCard} from "../movie-card/movie-card";
-import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
 
-export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
+import {UserInfo} from "./user-info";
+import {FavoriteMovies} from "./favorite-movies";
+import {UpdateUser} from "./update-user";
+import {Row, Container, Col} from "react-bootstrap";
+
+export const ProfileView = ({
+  user,
+  setUser,
+  token,
+  movies,
+  removeFavorite,
+  movie,
+}) => {
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
-
-  const result = movies.filter((movie) => {
-    return user.FavoriteMovies.includes(movie._id);
-  });
 
   const handleSubmitUpdate = (event) => {
     event.preventDefault();
@@ -47,7 +53,7 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
       });
   };
 
-  const handleSubmitDeregister = (event) => {
+  const handleSubmitDeregister = (event, onLoggedOut) => {
     event.preventDefault();
 
     const data = {
@@ -67,126 +73,41 @@ export const ProfileView = ({user, setUser, token, movies, removeFavorite}) => {
           Authorization: `Bearer ${token}`,
         },
       }
-    )
-      .then((response) => {
-        if (response.ok) {
-          alert("Deregister successful");
-          window.location.replace("/login");
-          loggedOut();
-        } else {
-          alert("Deregister failed");
-        }
-      })
-      .then((user) => {
-        localStorage.setItem("user", JSON.stringify(data));
-        setUser(user);
-      });
+    ).then((response) => {
+      if (response.ok) {
+        alert("Deregister succesful");
+        window.location.replace("/login");
+        onLoggedOut();
+      } else {
+        alert("Deregister failed");
+      }
+    });
   };
 
   return (
     <Container>
       <Row>
-        <Col>
-          <div style={{textAlign: "center"}}>
-            <span>
-              <b>
-                <i>User: </i>
-              </b>
-            </span>
-            <span>{user.Username}</span>
-          </div>
-          <div id="div-description" style={{textAlign: "center"}}>
-            <span>
-              <b>
-                <i>Email: </i>
-              </b>
-            </span>
-            <span>{user.Email}</span>
-          </div>
+        <Col xs={12} sm={6}>
+          {" "}
+          <UserInfo
+            name={user.Username}
+            email={user.Email}
+            handleSubmitDeregister={handleSubmitDeregister}
+          />
         </Col>
-      </Row>
-
-      <Row>
-        <Card>
-          <Card.Body>
-            <Card.Title> Update your info</Card.Title>
-            <Form onSubmit={handleSubmitUpdate}>
-              <Form.Group controlId="formUsername">
-                <Form.Label>
-                  Username:
-                  <Form.Control
-                    type="text"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    required
-                    minLength="3"
-                  />
-                </Form.Label>
-              </Form.Group>
-
-              <Form.Group controlId="formPassword">
-                <Form.Label>
-                  Password:
-                  <Form.Control
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required
-                  />
-                </Form.Label>
-              </Form.Group>
-
-              <Form.Group controlId="formEmail">
-                <Form.Label>
-                  Email:
-                  <Form.Control
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                  />
-                </Form.Label>
-              </Form.Group>
-
-              <Form.Group controlId="formBirthday">
-                <Form.Label>
-                  Birthday:
-                  <Form.Control
-                    type="date"
-                    value={birthday}
-                    onChange={(e) => setBirthday(e.target.value)}
-                    required
-                  />
-                </Form.Label>
-              </Form.Group>
-
-              <Button variant="primary" type="submit">
-                Update
-              </Button>
-            </Form>
-          </Card.Body>
-        </Card>
-      </Row>
-      <Row>
-        <Col>
-          <h3>Favorite Movies:</h3>
-
-          {result.map((movie) => (
-            <Col className="mb-5" xs={7} sm={6} md={4} lg={3} key={movie._id}>
-              <MovieCard
-                key={movie._id}
-                movie={movie}
-                user={user}
-                removeFavorite={removeFavorite}
-              />
-            </Col>
-          ))}
+        <Col xs={12} sm={6}>
+          {" "}
+          <UpdateUser handleSubmitUpdate={handleSubmitUpdate} user={user} />
         </Col>
       </Row>
       <Row>
-        <Button variant="primary" onClick={handleSubmitDeregister}>
-          Delete Account
-        </Button>
+        <Col>
+          <FavoriteMovies
+            movies={movies}
+            user={user}
+            removeFavorite={removeFavorite}
+          />
+        </Col>
       </Row>
     </Container>
   );

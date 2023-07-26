@@ -1,9 +1,9 @@
-@import "~bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap/scss/bootstrap";
 
-body {
-  font-family: Roboto, Helvetica, Arial, sans-serif;
+.btn {
+  margin-bottom: 10px;
 }
 
-button {
-  background-color: black;
+.fade.show {
+  opacity: 1;
 }

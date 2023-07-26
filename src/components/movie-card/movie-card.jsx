@@ -1,8 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Button, Card} from "react-bootstrap";
-import "./movie-card.scss";
 import {Link} from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+import "./movie-card.scss";
 
 export const MovieCard = ({movie, user, removeFavorite, addToFavorite}) => {
   return (
@@ -17,9 +19,7 @@ export const MovieCard = ({movie, user, removeFavorite, addToFavorite}) => {
               <Button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() => removeFavorite(movie)}
-                outline
-                floating>
+                onClick={() => removeFavorite(movie)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"
@@ -33,9 +33,7 @@ export const MovieCard = ({movie, user, removeFavorite, addToFavorite}) => {
               <Button
                 type="button"
                 className="btn btn-secondary"
-                onClick={() => addToFavorite(movie)}
-                outline
-                floating>
+                onClick={() => addToFavorite(movie)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="16"

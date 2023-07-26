@@ -1,16 +1,17 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {Link} from "react-router-dom";
-import {MDBBtn, MDBIcon} from "mdb-react-ui-kit";
+import "./nav-bar.scss";
 
 export const NavigationBar = ({user, onLoggedOut}) => {
   return (
     <>
       {[false].map((expand) => (
         <Navbar
-          bg="dark"
+          bg="light"
           key={expand}
           expand={expand}
           className="bg-body-tertiary mb-3">
@@ -20,6 +21,7 @@ export const NavigationBar = ({user, onLoggedOut}) => {
             </Navbar.Brand>
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
+              backdrop={false}
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="end">
@@ -29,7 +31,7 @@ export const NavigationBar = ({user, onLoggedOut}) => {
                 </Offcanvas.Title>
               </Offcanvas.Header>
               <Offcanvas.Body>
-                <Nav className="me-auto">
+                <Nav className="justify-content-end flex-grow-1 pe-3">
                   {!user && (
                     <>
                       <Nav.Link as={Link} to="/login">

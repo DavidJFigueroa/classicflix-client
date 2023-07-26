@@ -12,9 +12,9 @@ export const MovieView = ({movies}) => {
 
   return (
     <Container>
-      <Row className="justify-content-md-center">
+      <Row>
         <Col>
-          <Card>
+          <Row>
             <Col>
               <Card.Img
                 className="d-block mx-auto"
@@ -23,48 +23,49 @@ export const MovieView = ({movies}) => {
                 alt="movie-img"
               />
             </Col>
-            <Col>
-              <div style={{textAlign: "center"}}>
-                <span>
-                  <b>
-                    <i>Title: </i>
-                  </b>
-                </span>
-                <span>{movie.Title}</span>
-              </div>
-              <div id="div-description" style={{textAlign: "center"}}>
-                <span>
-                  <b>
-                    <i>Description: </i>
-                  </b>
-                </span>
-                <span>{movie.Description}</span>
-              </div>
-              <div style={{textAlign: "center"}}>
-                <span>
-                  {" "}
-                  <b>
-                    <i>Director: </i>
-                  </b>
-                </span>
-                <span>{movie.Director.Name}</span>
-              </div>
-              <div style={{textAlign: "center"}}>
-                <span>
-                  {" "}
-                  <b>
-                    <i>Genre: </i>
-                  </b>
-                </span>
-                <span>{movie.Genre.Name}</span>
-              </div>
-              <div style={{textAlign: "center"}}>
-                <Link to={"/"}>
-                  <Button id="backbutton">Back</Button>
-                </Link>
-              </div>
-            </Col>
-          </Card>
+          </Row>
+
+          <Col>
+            <div style={{textAlign: "center"}}>
+              <span>
+                <b>
+                  <i>Title: </i>
+                </b>
+              </span>
+              <span>{movie.Title}</span>
+            </div>
+            <div id="div-description" style={{textAlign: "center"}}>
+              <span>
+                <b>
+                  <i>Description: </i>
+                </b>
+              </span>
+              <span>{movie.Description}</span>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <span>
+                {" "}
+                <b>
+                  <i>Director: </i>
+                </b>
+              </span>
+              <span>{movie.Director.Name}</span>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <span>
+                {" "}
+                <b>
+                  <i>Genre: </i>
+                </b>
+              </span>
+              <span>{movie.Genre.Name}</span>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <Link to={"/"}>
+                <Button id="backbutton">Back</Button>
+              </Link>
+            </div>
+          </Col>
         </Col>
       </Row>
     </Container>

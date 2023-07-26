@@ -60,8 +60,7 @@ export const MainView = () => {
     )
       .then((response) => {
         if (response.ok) {
-          alert("Added to favorites");
-          response.json();
+          return response.json();
         } else {
           alert("Could not be added");
         }
@@ -86,9 +85,7 @@ export const MainView = () => {
     )
       .then((response) => {
         if (response.ok) {
-          alert("Removed from favorites");
-          response.json();
-          window.location.reload();
+          return response.json();
         } else {
           alert("Could not be removed");
         }
@@ -206,6 +203,7 @@ export const MainView = () => {
                       token={token}
                       movies={movies}
                       removeFavorite={removeFavorite}
+                      onLoggedOut={handleLogout}
                     />
                   </Col>
                 ) : (
