@@ -53,7 +53,7 @@ export const ProfileView = ({
       });
   };
 
-  const handleSubmitDeregister = (event, onLoggedOut) => {
+  const handleSubmitDeregister = (event,  onLoggedOut) => {
     event.preventDefault();
 
     const data = {
@@ -75,14 +75,15 @@ export const ProfileView = ({
       }
     ).then((response) => {
       if (response.ok) {
-        alert("Deregister succesful");
-        window.location.replace("/login");
+        alert ("Deregister succesful");
+        window.location.replace("/signup");
         onLoggedOut();
       } else {
         alert("Deregister failed");
       }
     });
-  };
+
+ 
 
   return (
     <Container>
