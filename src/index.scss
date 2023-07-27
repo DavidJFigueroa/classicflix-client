@@ -1,5 +1,23 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
+// @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap");
+
+$primary: red;
+
+body {
+  font-family: "Lora", serif !important;
+  color: white !important;
+  background-color: rgb(12, 107, 138) !important;
+}
+
+$heading-font-family: "Playfair Display", serif;
+$body-font-family: "Playfair Display", serif;
 
 .btn {
   margin-bottom: 10px;
 }
+
+.navbar-custom {
+  background-color: rgb(12, 107, 138) !important;
+}
+
+@import "~bootstrap/scss/bootstrap";

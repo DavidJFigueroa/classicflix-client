@@ -47683,14 +47683,14 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                             children: "Classic Flix"
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 19,
+                            lineNumber: 18,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
                             "aria-controls": `offcanvasNavbar-expand-${expand}`
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 22,
+                            lineNumber: 21,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Offcanvas, {
@@ -47706,12 +47706,12 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         children: "Menu"
                                     }, void 0, false, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                        lineNumber: 29,
+                                        lineNumber: 28,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                                    lineNumber: 28,
+                                    lineNumber: 27,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
@@ -47726,7 +47726,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Login"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 37,
+                                                        lineNumber: 36,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -47735,7 +47735,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Signup"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 40,
+                                                        lineNumber: 39,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
@@ -47748,7 +47748,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Home"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 48,
+                                                        lineNumber: 47,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -47757,7 +47757,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "My Profile"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 51,
+                                                        lineNumber: 50,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -47765,7 +47765,7 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                                         children: "Logout"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 54,
+                                                        lineNumber: 53,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
@@ -47773,29 +47773,29 @@ const NavigationBar = ({ user, onLoggedOut })=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                        lineNumber: 34,
+                                        lineNumber: 33,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 32,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 23,
+                            lineNumber: 22,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                    lineNumber: 18,
+                    lineNumber: 17,
                     columnNumber: 11
                 }, undefined)
             }, expand, false, {
                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                lineNumber: 13,
+                lineNumber: 12,
                 columnNumber: 9
             }, undefined))
     }, void 0, false);
