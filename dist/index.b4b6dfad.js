@@ -47962,7 +47962,7 @@ const ProfileView = ({ user, setUser, token, movies, removeFavorite, handleLogou
 };
 _s(ProfileView, "liv2JdM8/aRUhXNglA6p+zD50Y4=");
 _c = ProfileView;
-ProfileView.PropTypes = {
+ProfileView.propTypes = {
     movies: (0, _propTypesDefault.default).object,
     user: (0, _propTypesDefault.default).object,
     token: (0, _propTypesDefault.default).string,
@@ -48061,7 +48061,7 @@ function UserInfo({ email, name, handleSubmitDeregister }) {
     }, void 0, false);
 }
 _c = UserInfo;
-UserInfo.PropTypes = {
+UserInfo.propTypes = {
     email: (0, _propTypesDefault.default).string,
     name: (0, _propTypesDefault.default).string,
     handleSubmitDeregister: (0, _propTypesDefault.default).func
@@ -48150,7 +48150,7 @@ function FavoriteMovies({ movies, user, removeFavorite }) {
     }, void 0, true);
 }
 _c = FavoriteMovies;
-FavoriteMovies.PropTypes = {
+FavoriteMovies.propTypes = {
     movies: (0, _propTypesDefault.default).object,
     user: (0, _propTypesDefault.default).object,
     removeFavorite: (0, _propTypesDefault.default).func
@@ -48176,6 +48176,8 @@ parcelHelpers.export(exports, "UpdateUser", ()=>UpdateUser);
 var _jsxDevRuntime = require("react/jsx-dev-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPassword, setBirthday }) {
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Card), {
@@ -48185,7 +48187,7 @@ function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPasswo
                     children: " Update your info"
                 }, void 0, false, {
                     fileName: "src/components/profile-view/update-user.jsx",
-                    lineNumber: 15,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -48207,23 +48209,23 @@ function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPasswo
                                                     minLength: "3"
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/update-user.jsx",
-                                                    lineNumber: 23,
+                                                    lineNumber: 24,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 21,
+                                            lineNumber: 22,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 20,
+                                        lineNumber: 21,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/update-user.jsx",
-                                    lineNumber: 19,
+                                    lineNumber: 20,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -48241,30 +48243,30 @@ function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPasswo
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "src/components/profile-view/update-user.jsx",
-                                                        lineNumber: 38,
+                                                        lineNumber: 39,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/profile-view/update-user.jsx",
-                                                lineNumber: 36,
+                                                lineNumber: 37,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 35,
+                                            lineNumber: 36,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/profile-view/update-user.jsx",
-                                    lineNumber: 33,
+                                    lineNumber: 34,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/update-user.jsx",
-                            lineNumber: 18,
+                            lineNumber: 19,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Row), {
@@ -48284,24 +48286,24 @@ function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPasswo
                                                         required: true
                                                     }, void 0, false, {
                                                         fileName: "src/components/profile-view/update-user.jsx",
-                                                        lineNumber: 54,
+                                                        lineNumber: 55,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "src/components/profile-view/update-user.jsx",
-                                                lineNumber: 52,
+                                                lineNumber: 53,
                                                 columnNumber: 17
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 51,
+                                            lineNumber: 52,
                                             columnNumber: 15
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/profile-view/update-user.jsx",
-                                    lineNumber: 49,
+                                    lineNumber: 50,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Col), {
@@ -48317,29 +48319,29 @@ function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPasswo
                                                     required: true
                                                 }, void 0, false, {
                                                     fileName: "src/components/profile-view/update-user.jsx",
-                                                    lineNumber: 67,
+                                                    lineNumber: 68,
                                                     columnNumber: 19
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/profile-view/update-user.jsx",
-                                            lineNumber: 65,
+                                            lineNumber: 66,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "src/components/profile-view/update-user.jsx",
-                                        lineNumber: 64,
+                                        lineNumber: 65,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "src/components/profile-view/update-user.jsx",
-                                    lineNumber: 63,
+                                    lineNumber: 64,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/profile-view/update-user.jsx",
-                            lineNumber: 48,
+                            lineNumber: 49,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -48348,31 +48350,31 @@ function UpdateUser({ handleSubmitUpdate, user, setUsername, setEmail, setPasswo
                             children: "Update"
                         }, void 0, false, {
                             fileName: "src/components/profile-view/update-user.jsx",
-                            lineNumber: 78,
+                            lineNumber: 79,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/profile-view/update-user.jsx",
-                    lineNumber: 17,
+                    lineNumber: 18,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "src/components/profile-view/update-user.jsx",
-            lineNumber: 14,
+            lineNumber: 15,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "src/components/profile-view/update-user.jsx",
-        lineNumber: 13,
+        lineNumber: 14,
         columnNumber: 5
     }, this);
 }
 _c = UpdateUser;
-UpdateUser.PropTypes = {
-    user: PropTypes.object,
-    handleSubmitUpdate: PropTypes.func
+UpdateUser.propTypes = {
+    user: (0, _propTypesDefault.default).object,
+    handleSubmitUpdate: (0, _propTypesDefault.default).func
 };
 var _c;
 $RefreshReg$(_c, "UpdateUser");
@@ -48382,6 +48384,6 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","react-bootstrap":"3AD9A"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}]},["9kujA","dGocb","d8Dch"], "d8Dch", "parcelRequirea9e5")
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","react-bootstrap":"3AD9A","prop-types":"7wKI2"}],"eBaMl":[function() {},{}],"lJZlQ":[function() {},{}],"i5LP7":[function() {},{}]},["9kujA","dGocb","d8Dch"], "d8Dch", "parcelRequirea9e5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map

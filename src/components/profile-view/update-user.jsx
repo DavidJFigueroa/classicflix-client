@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
 
 export function UpdateUser({
