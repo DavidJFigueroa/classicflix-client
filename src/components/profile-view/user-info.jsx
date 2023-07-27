@@ -25,7 +25,7 @@ export function UserInfo({email, name, handleSubmitDeregister}) {
   );
 }
 
-UserInfo.PropTypes = {
+UserInfo.propTypes = {
   email: PropTypes.string,
   name: PropTypes.string,
   handleSubmitDeregister: PropTypes.func,

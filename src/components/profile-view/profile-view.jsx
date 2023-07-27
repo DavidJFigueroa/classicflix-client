@@ -116,7 +116,7 @@ export const ProfileView = ({
   );
 };
 
-ProfileView.PropTypes = {
+ProfileView.propTypes = {
   movies: PropTypes.object,
   user: PropTypes.object,
   token: PropTypes.string,

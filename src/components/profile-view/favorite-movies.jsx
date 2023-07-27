@@ -33,7 +33,7 @@ export function FavoriteMovies({movies, user, removeFavorite}) {
   );
 }
 
-FavoriteMovies.PropTypes = {
+FavoriteMovies.propTypes = {
   movies: PropTypes.object,
   user: PropTypes.object,
   removeFavorite: PropTypes.func,

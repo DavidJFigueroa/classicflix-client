@@ -84,7 +84,7 @@ export function UpdateUser({
   );
 }
 
-UpdateUser.PropTypes = {
+UpdateUser.propTypes = {
   user: PropTypes.object,
   handleSubmitUpdate: PropTypes.func,
 };
