@@ -3,9 +3,10 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {MovieCard} from "../movie-card/movie-card";
 import PropTypes from "prop-types";
+import {useSelector} from "react-redux";
 
 export function FavoriteMovies({user, removeFavorite}) {
-  const movies = useSelector((state) => state.movies);
+  const movies = useSelector((state) => state.movies.list);
   const result = movies.filter((m) => {
     return user.FavoriteMovies.includes(m._id);
   });

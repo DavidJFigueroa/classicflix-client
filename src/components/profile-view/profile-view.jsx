@@ -4,6 +4,7 @@ import {UserInfo} from "./user-info";
 import {FavoriteMovies} from "./favorite-movies";
 import {UpdateUser} from "./update-user";
 import {Row, Container, Col} from "react-bootstrap";
+import {useSelector} from "react-redux";
 
 export const ProfileView = ({
   user,
@@ -16,7 +17,6 @@ export const ProfileView = ({
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
-  const movies = useSelector((state) => state.movies);
 
   const handleSubmitUpdate = (event) => {
     event.preventDefault();
@@ -106,7 +106,7 @@ export const ProfileView = ({
       <Row>
         <Col>
           <FavoriteMovies
-            movies={movies}
+            // movies={movies}
             user={user}
             removeFavorite={removeFavorite}
           />

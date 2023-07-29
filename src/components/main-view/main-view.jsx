@@ -13,7 +13,7 @@ import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import "./main-view.scss";
 
 export const MainView = () => {
-  const movies = useSelector((state) => state.movies.list);
+  const movies = useSelector((state) => state.movies);
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
@@ -41,6 +41,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         dispatch(setMovies(data));
+        console.log(movies);
       })
       .catch((error) => {
         console.log("Error fetching movies:", error);
