@@ -4,7 +4,8 @@ import Col from "react-bootstrap/Col";
 import {MovieCard} from "../movie-card/movie-card";
 import PropTypes from "prop-types";
 
-export function FavoriteMovies({movies, user, removeFavorite}) {
+export function FavoriteMovies({user, removeFavorite}) {
+  const movies = useSelector((state) => state.movies);
   const result = movies.filter((m) => {
     return user.FavoriteMovies.includes(m._id);
   });

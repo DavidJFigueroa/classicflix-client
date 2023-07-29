@@ -3,11 +3,13 @@ import {Link} from "react-router-dom";
 import {useParams} from "react-router";
 import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
+import {useSelector} from "react-redux";
 
 import "./movie-view.scss";
 import "../../index.scss";
 
 export const MovieView = ({movies}) => {
+  const movies = useSelector((state) => state.movies);
   const {movieID} = useParams();
   const movie = movies.find((m) => m._id === movieID);
 

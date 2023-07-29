@@ -2,10 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Button, Card} from "react-bootstrap";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 import "./movie-card.scss";
 
 export const MovieCard = ({movie, user, removeFavorite, addToFavorite}) => {
+  const movies = useSelector((state) => state.movies);
   return (
     <Card className="h-100">
       <div style={{textAlign: "center"}}>

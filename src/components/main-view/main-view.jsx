@@ -1,4 +1,6 @@
 import {useState, useEffect} from "react";
+import {useSelector, useDispatch} from "react-redux";
+import {setMovies} from "../../redux/reducers/movies";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 import {LoginView} from "../login-view/login-view";
@@ -11,6 +13,7 @@ import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import "./main-view.scss";
 
 export const MainView = () => {
+  const movies = useSelector((state) => state.movies.list);
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
@@ -18,7 +21,8 @@ export const MainView = () => {
 
   const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
+
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
     setUser(null);
@@ -36,7 +40,7 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data);
+        dispatch(setMovies(data));
       })
       .catch((error) => {
         console.log("Error fetching movies:", error);
@@ -101,7 +105,7 @@ export const MainView = () => {
         <NavigationBar
           user={user}
           onLoggedOut={handleLogout}
-          movies={movies}
+          // movies={movies}
           setMovies={setMovies}
         />
 
@@ -149,7 +153,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    <MovieView />
                   </Col>
                 )}
               </>
@@ -176,7 +180,7 @@ export const MainView = () => {
                         <MovieCard
                           key={movie._id}
                           movie={movie}
-                          movies={movies}
+                          // movies={movies}
                           user={user}
                           setUser={setUser}
                           addToFavorite={addToFavorite}
@@ -199,7 +203,7 @@ export const MainView = () => {
                       user={user}
                       setUser={setUser}
                       token={token}
-                      movies={movies}
+                      // movies={movies}
                       removeFavorite={removeFavorite}
                       handleLogout={handleLogout}
                     />

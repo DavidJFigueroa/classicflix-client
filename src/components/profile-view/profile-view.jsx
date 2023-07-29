@@ -9,7 +9,6 @@ export const ProfileView = ({
   user,
   setUser,
   token,
-  movies,
   removeFavorite,
   handleLogout,
 }) => {
@@ -17,6 +16,7 @@ export const ProfileView = ({
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
+  const movies = useSelector((state) => state.movies);
 
   const handleSubmitUpdate = (event) => {
     event.preventDefault();
