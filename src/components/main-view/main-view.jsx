@@ -1,6 +1,7 @@
 import {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {setMovies} from "../../redux/reducers/movies";
+import {setUser} from "../../redux/reducers/user";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 import {LoginView} from "../login-view/login-view";
@@ -174,7 +175,7 @@ export const MainView = () => {
                           movie={movie}
                           // movies={movies}
                           user={user}
-                          setUser={setUser}
+                          // setUser={setUser}
                           addToFavorite={addToFavorite}
                           removeFavorite={removeFavorite}
                         />
@@ -192,7 +193,7 @@ export const MainView = () => {
                 {user ? (
                   <Col>
                     <ProfileView
-                      setUser={setUser}
+                      // setUser={setUser}
                       token={token}
                       // movies={movies}
                       removeFavorite={removeFavorite}
