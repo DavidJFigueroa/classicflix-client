@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
 
 import "./movie-view.scss";
+import "../../index.scss";
 
 export const MovieView = ({movies}) => {
   const {movieID} = useParams();

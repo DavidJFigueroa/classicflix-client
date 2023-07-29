@@ -36,8 +36,6 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-
         setMovies(data);
       })
       .catch((error) => {

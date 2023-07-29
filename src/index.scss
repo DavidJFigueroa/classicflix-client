@@ -1,23 +1,22 @@
-// @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap");
+@import "~bootstrap/scss/bootstrap";
 
-$primary: red;
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap");
 
 body {
   font-family: "Lora", serif !important;
-  color: white !important;
-  background-color: rgb(12, 107, 138) !important;
+  // color: white !important;
+  // background-color: rgb(12, 107, 138) !important;
 }
-
-$heading-font-family: "Playfair Display", serif;
-$body-font-family: "Playfair Display", serif;
 
 .btn {
   margin-bottom: 10px;
 }
 
-.navbar-custom {
-  background-color: rgb(12, 107, 138) !important;
+.btn-primary {
+  background-color: rgb(107, 104, 104) !important;
+  border-color: rgb(107, 104, 104) !important ;
 }
 
-@import "~bootstrap/scss/bootstrap";
+.btn-link {
+  color: rgb(107, 104, 104) !important;
+}
