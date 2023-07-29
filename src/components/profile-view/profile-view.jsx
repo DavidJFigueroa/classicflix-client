@@ -106,7 +106,7 @@ export const ProfileView = ({
       <Row>
         <Col>
           <FavoriteMovies
-            // movies={movies}
+        
             user={user}
             removeFavorite={removeFavorite}
           />

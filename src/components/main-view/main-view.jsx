@@ -13,13 +13,14 @@ import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import "./main-view.scss";
 
 export const MainView = () => {
-  const movies = useSelector((state) => state.movies);
+  const movies = useSelector((state) => state.movies.list);
+  const user = useSelector((state) => state.user);
   const storedUser = localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : null;
   const storedToken = localStorage.getItem("token");
 
-  const [user, setUser] = useState(storedUser ? storedUser : null);
+  // const [user, setUser] = useState(storedUser ? storedUser : null);
   const [token, setToken] = useState(storedToken ? storedToken : null);
 
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ export const MainView = () => {
       .then((response) => response.json())
       .then((data) => {
         dispatch(setMovies(data));
-        console.log(movies);
+        console.log(data);
       })
       .catch((error) => {
         console.log("Error fetching movies:", error);
@@ -103,12 +104,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <Row>
-        <NavigationBar
-          user={user}
-          onLoggedOut={handleLogout}
-          // movies={movies}
-          setMovies={setMovies}
-        />
+        <NavigationBar />
 
         <Routes>
           <Route
@@ -201,7 +197,6 @@ export const MainView = () => {
                 {user ? (
                   <Col>
                     <ProfileView
-                      user={user}
                       setUser={setUser}
                       token={token}
                       // movies={movies}
