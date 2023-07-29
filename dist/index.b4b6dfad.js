@@ -33158,7 +33158,6 @@ const userSlice = (0, _toolkit.createSlice)({
 });
 const { setUser } = userSlice.actions;
 exports.default = userSlice.reducer;
-git;
 
 },{"@reduxjs/toolkit":"lL1Ef","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"bwuIu":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$67b2 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
