@@ -13186,9 +13186,21 @@ textarea.form-control-lg {
   }
 }
 
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+button {
+  background-color: #000;
+}
+
 img {
   max-width: 244px;
   max-height: 365px;
+}
+
+button {
+  margin-bottom: 10px;
 }
 
 #movie-img {

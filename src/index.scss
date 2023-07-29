@@ -1,1 +1,22 @@
-@import "~bootstrap/scss/bootstrap.scss";
+@import "~bootstrap/scss/bootstrap";
+
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap");
+
+body {
+  font-family: "Lora", serif !important;
+  // color: white !important;
+  // background-color: rgb(12, 107, 138) !important;
+}
+
+.btn {
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  background-color: rgb(107, 104, 104) !important;
+  border-color: rgb(107, 104, 104) !important ;
+}
+
+.btn-link {
+  color: rgb(107, 104, 104) !important;
+}

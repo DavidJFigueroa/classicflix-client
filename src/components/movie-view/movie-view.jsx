@@ -1,15 +1,21 @@
 import React from "react";
-import {Route, Link, Routes, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
+import {useParams} from "react-router";
 import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
-import "./movie-view.scss";
 
-export const MovieView = ({movie, onBackClick}) => {
+import "./movie-view.scss";
+import "../../index.scss";
+
+export const MovieView = ({movies}) => {
+  const {movieID} = useParams();
+  const movie = movies.find((m) => m._id === movieID);
+
   return (
     <Container>
-      <Row className="justify-content-md-center">
+      <Row>
         <Col>
-          <Card>
+          <Row>
             <Col>
               <Card.Img
                 className="d-block mx-auto"
@@ -18,48 +24,49 @@ export const MovieView = ({movie, onBackClick}) => {
                 alt="movie-img"
               />
             </Col>
-            <Col>
-              <div style={{textAlign: "center"}}>
-                <span>
-                  <b>
-                    <i>Title: </i>
-                  </b>
-                </span>
-                <span>{movie.Title}</span>
-              </div>
-              <div id="div-description" style={{textAlign: "center"}}>
-                <span>
-                  <b>
-                    <i>Description: </i>
-                  </b>
-                </span>
-                <span>{movie.Description}</span>
-              </div>
-              <div style={{textAlign: "center"}}>
-                <span>
-                  {" "}
-                  <b>
-                    <i>Director: </i>
-                  </b>
-                </span>
-                <span>{movie.Director.Name}</span>
-              </div>
-              <div style={{textAlign: "center"}}>
-                <span>
-                  {" "}
-                  <b>
-                    <i>Genre: </i>
-                  </b>
-                </span>
-                <span>{movie.Genre.Name}</span>
-              </div>
-              <div style={{textAlign: "center"}}>
-                <Button id="backbutton" onClick={onBackClick}>
-                  Back
-                </Button>
-              </div>
-            </Col>
-          </Card>
+          </Row>
+
+          <Col>
+            <div style={{textAlign: "center"}}>
+              <span>
+                <b>
+                  <i>Title: </i>
+                </b>
+              </span>
+              <span>{movie.Title}</span>
+            </div>
+            <div id="div-description" style={{textAlign: "center"}}>
+              <span>
+                <b>
+                  <i>Description: </i>
+                </b>
+              </span>
+              <span>{movie.Description}</span>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <span>
+                {" "}
+                <b>
+                  <i>Director: </i>
+                </b>
+              </span>
+              <span>{movie.Director.Name}</span>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <span>
+                {" "}
+                <b>
+                  <i>Genre: </i>
+                </b>
+              </span>
+              <span>{movie.Genre.Name}</span>
+            </div>
+            <div style={{textAlign: "center"}}>
+              <Link to={"/"}>
+                <Button id="backbutton">Back</Button>
+              </Link>
+            </div>
+          </Col>
         </Col>
       </Row>
     </Container>
@@ -79,6 +86,5 @@ MovieView.propTypes = {
       Name: PropTypes.string,
       Description: PropTypes.string,
     }),
-  }).isRequired,
-  onBackClick: PropTypes.func,
+  }),
 };
