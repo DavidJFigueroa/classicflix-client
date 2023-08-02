@@ -13,7 +13,7 @@ import {
 import "./login-view.scss";
 
 import {useDispatch} from "react-redux";
-import {setUser} from "../../redux/reducers/user";
+import {setUser, setToken} from "../../redux/reducers/user";
 
 export const LoginView = () => {
   const [username, setUsername] = useState("");
@@ -40,7 +40,7 @@ export const LoginView = () => {
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
-          dispatch(setUser(data.user, data.token));
+          dispatch(setUser(data.user), setToken(data.token));
         } else {
           alert("No such user");
         }
