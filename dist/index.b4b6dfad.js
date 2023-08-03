@@ -27297,7 +27297,7 @@ const MainView = ()=>{
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
                             path: "/login",
                             element: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
-                                children: user === null ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
+                                children: user ? /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Navigate), {
                                     to: "/"
                                 }, void 0, false, void 0, void 0) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                                     md: 5,
@@ -52813,8 +52813,8 @@ const LoginView = ()=>{
             if (data.user) {
                 dispatch((0, _user.setUser)(data.user), (0, _token.setToken)(data.token));
                 console.log(data);
-                localStorage.setItem("user", JSON.stringify(data.user));
-                localStorage.setItem("token", data.token);
+            //   localStorage.setItem("user", JSON.stringify(data.user));
+            //   localStorage.setItem("token", data.token);
             } else alert("No such user");
         }).catch((error)=>{
             alert("Something went wrong:" + error);
@@ -52950,9 +52950,6 @@ _s(LoginView, "hfLFCx16V4K1m8kS4JbFPmLkqZE=", false, function() {
     ];
 });
 _c = LoginView;
-LoginView.propTypes = {
-    onLoggedIn: (0, _propTypesDefault.default).func
-};
 var _c;
 $RefreshReg$(_c, "LoginView");
 
