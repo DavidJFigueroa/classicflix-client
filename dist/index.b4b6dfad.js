@@ -52813,8 +52813,8 @@ const LoginView = ()=>{
             if (data.user) {
                 dispatch((0, _user.setUser)(data.user), (0, _token.setToken)(data.token));
                 console.log(data);
-            //   localStorage.setItem("user", JSON.stringify(data.user));
-            //   localStorage.setItem("token", data.token);
+                localStorage.setItem("user", JSON.stringify(data.user));
+                localStorage.setItem("token", data.token);
             } else alert("No such user");
         }).catch((error)=>{
             alert("Something went wrong:" + error);
@@ -52965,12 +52965,10 @@ parcelHelpers.export(exports, "setUser", ()=>setUser);
 var _toolkit = require("@reduxjs/toolkit");
 const userSlice = (0, _toolkit.createSlice)({
     name: "user",
-    initialState: {
-        user: null
-    },
+    initialState: null,
     reducers: {
         setUser: (state, action)=>{
-            state.user = action.payload;
+            state = action.payload;
         }
     }
 });
