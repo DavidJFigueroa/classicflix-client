@@ -52987,7 +52987,7 @@ const tokenSlice = (0, _toolkit.createSlice)({
     },
     reducers: {
         setToken: (state, action)=>{
-            state.token = action.payload;
+            state = action.payload;
         }
     }
 });
