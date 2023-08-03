@@ -129,7 +129,7 @@ export const MainView = () => {
             path="/login"
             element={
               <>
-                {user ? (
+                {user === null ? (
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>

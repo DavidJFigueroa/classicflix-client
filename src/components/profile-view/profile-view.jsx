@@ -4,19 +4,18 @@ import {UserInfo} from "./user-info";
 import {FavoriteMovies} from "./favorite-movies";
 import {UpdateUser} from "./update-user";
 import {Row, Container, Col} from "react-bootstrap";
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
-export const ProfileView = ({
-  user,
-  setUser,
-  token,
-  removeFavorite,
-  handleLogout,
-}) => {
+export const ProfileView = ({removeFavorite, handleLogout}) => {
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
+
   const [username, setUsername] = useState(user.Username);
   const [password, setPassword] = useState(user.Password);
   const [email, setEmail] = useState(user.Email);
   const [birthday, setBirthday] = useState(user.Birthday);
+
+  const dispatch = useDispatch();
 
   const handleSubmitUpdate = (event) => {
     event.preventDefault();
@@ -105,11 +104,7 @@ export const ProfileView = ({
       </Row>
       <Row>
         <Col>
-          <FavoriteMovies
-        
-            user={user}
-            removeFavorite={removeFavorite}
-          />
+          <FavoriteMovies user={user} removeFavorite={removeFavorite} />
         </Col>
       </Row>
     </Container>
@@ -119,7 +114,7 @@ export const ProfileView = ({
 ProfileView.propTypes = {
   movies: PropTypes.object,
   user: PropTypes.object,
-  token: PropTypes.string,
+  token: PropTypes.object,
   removeFavorite: PropTypes.func,
   handleLogout: PropTypes.func,
 };
