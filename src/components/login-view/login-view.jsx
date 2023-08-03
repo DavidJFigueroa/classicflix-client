@@ -13,7 +13,8 @@ import {
 import "./login-view.scss";
 
 import {useDispatch} from "react-redux";
-import {setUser, setToken} from "../../redux/reducers/user";
+import {setUser} from "../../redux/reducers/user";
+import {setToken} from "../../redux/reducers/token";
 
 export const LoginView = () => {
   const [username, setUsername] = useState("");
@@ -38,17 +39,19 @@ export const LoginView = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);
           dispatch(setUser(data.user), setToken(data.token));
+          // console.log(data);
+          // localStorage.setItem("user", JSON.stringify(data.user));
+          // localStorage.setItem("token", data.token);
         } else {
           alert("No such user");
         }
       })
-      .catch((e) => {
-        alert("Something went wrong");
+      .catch((error) => {
+        alert("Something went wrong:" + error);
       });
   };
+
   return (
     <Container>
       <Row>

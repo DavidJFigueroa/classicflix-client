@@ -2,6 +2,7 @@ import {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
 import {setMovies} from "../../redux/reducers/movies";
 import {setUser} from "../../redux/reducers/user";
+import {setToken} from "../../redux/reducers/token";
 import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 import {LoginView} from "../login-view/login-view";
@@ -18,7 +19,6 @@ export const MainView = () => {
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
 
-  
   // const storedUser = localStorage.getItem("user")
   //   ? JSON.parse(localStorage.getItem("user"))
   //   : null;
