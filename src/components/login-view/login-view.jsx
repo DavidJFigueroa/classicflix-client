@@ -17,6 +17,7 @@ import {setUser} from "../../redux/reducers/user";
 import {setToken} from "../../redux/reducers/token";
 
 export const LoginView = () => {
+  const user = useSelector((state) => state.user);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -39,7 +40,7 @@ export const LoginView = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
-          dispatch(setUser(data.user), setToken(data.token));
+          dispatch(setUser(user), setToken(data.token));
           console.log(data);
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);
