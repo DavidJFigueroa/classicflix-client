@@ -39,7 +39,8 @@ export const LoginView = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
-          dispatch(setUser(data.user), setToken(data.token));
+          dispatch(setUser(data.user));
+          dispatch(setToken(data.token));
           console.log(data);
           localStorage.setItem("user", JSON.stringify(data.user));
           localStorage.setItem("token", data.token);

@@ -30,8 +30,8 @@ export const MainView = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
-    setUser(null);
-    setToken(null);
+    dispatch(setUser(null));
+    dispatch(setToken(null));
     localStorage.clear();
   };
 
@@ -74,7 +74,7 @@ export const MainView = () => {
         }
       })
       .then((user) => {
-        setUser(user);
+        dispatch(setUser(user));
         localStorage.setItem("user", JSON.stringify(user));
         setIsFavorite(true);
       });
@@ -99,7 +99,7 @@ export const MainView = () => {
         }
       })
       .then((user) => {
-        setUser(user);
+        dispatch(setUser(user));
         localStorage.setItem("user", JSON.stringify(user));
         setIsFavorite(false);
       });
