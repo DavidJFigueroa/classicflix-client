@@ -27209,12 +27209,6 @@ const MainView = ()=>{
     const movies = (0, _reactRedux.useSelector)((state)=>state.movies.list);
     const user = (0, _reactRedux.useSelector)((state)=>state.user);
     const token = (0, _reactRedux.useSelector)((state)=>state.token);
-    // const storedUser = localStorage.getItem("user")
-    //   ? JSON.parse(localStorage.getItem("user"))
-    //   : null;
-    // const storedToken = localStorage.getItem("token");
-    // const [user, setUser] = useState(storedUser ? storedUser : null);
-    // const [token, setToken] = useState(storedToken ? storedToken : null);
     const dispatch = (0, _reactRedux.useDispatch)();
     const handleLogout = ()=>{
         dispatch((0, _user.setUser)(null));
@@ -27274,7 +27268,7 @@ const MainView = ()=>{
             children: [
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navBar.NavigationBar), {}, void 0, false, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 111,
+                    lineNumber: 105,
                     columnNumber: 9
                 }, undefined),
                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Routes), {
@@ -27291,7 +27285,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 114,
+                            lineNumber: 108,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27306,7 +27300,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 128,
+                            lineNumber: 122,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27324,7 +27318,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 142,
+                            lineNumber: 136,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27355,7 +27349,7 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 158,
+                            lineNumber: 152,
                             columnNumber: 11
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRouterDom.Route), {
@@ -27376,24 +27370,24 @@ const MainView = ()=>{
                             }, void 0, false)
                         }, void 0, false, {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 192,
+                            lineNumber: 186,
                             columnNumber: 11
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 113,
+                    lineNumber: 107,
                     columnNumber: 9
                 }, undefined)
             ]
         }, void 0, true, {
             fileName: "src/components/main-view/main-view.jsx",
-            lineNumber: 110,
+            lineNumber: 104,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 109,
+        lineNumber: 103,
         columnNumber: 5
     }, undefined);
 };
@@ -52981,9 +52975,10 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "setToken", ()=>setToken);
 var _toolkit = require("@reduxjs/toolkit");
+const token = localStorage.getItem("token") || null;
 const tokenSlice = (0, _toolkit.createSlice)({
     name: "token",
-    initialState: null,
+    initialState: token,
     reducers: {
         setToken: (state, action)=>{
             state = action.payload;

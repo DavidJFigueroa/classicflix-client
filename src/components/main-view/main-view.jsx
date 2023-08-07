@@ -19,13 +19,7 @@ export const MainView = () => {
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
 
-  // const storedUser = localStorage.getItem("user")
-  //   ? JSON.parse(localStorage.getItem("user"))
-  //   : null;
-  // const storedToken = localStorage.getItem("token");
 
-  // const [user, setUser] = useState(storedUser ? storedUser : null);
-  // const [token, setToken] = useState(storedToken ? storedToken : null);
 
   const dispatch = useDispatch();
 
