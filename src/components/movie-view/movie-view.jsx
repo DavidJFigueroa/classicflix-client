@@ -8,7 +8,7 @@ import "./movie-view.scss";
 import "../../index.scss";
 
 export const MovieView = () => {
-  const movies = useSelector((state) => state.movies);
+  const movies = useSelector((state) => state.movies.list);
   const {movieID} = useParams();
   const movie = movies.find((m) => m._id === movieID);
 

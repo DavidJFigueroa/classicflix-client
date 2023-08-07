@@ -114,7 +114,7 @@ export const ProfileView = ({removeFavorite, handleLogout}) => {
 ProfileView.propTypes = {
   movies: PropTypes.object,
   user: PropTypes.object,
-  token: PropTypes.object,
+  token: PropTypes.string,
   removeFavorite: PropTypes.func,
   handleLogout: PropTypes.func,
 };
