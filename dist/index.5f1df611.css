@@ -13229,6 +13229,15 @@ body {
   margin: 0 !important;
 }
 
+img {
+  max-width: 244px;
+  max-height: 365px;
+}
+
+.list-row {
+  margin-left: 0 !important;
+}
+
 #loginbutton {
   margin-top: 7px;
 }
@@ -13251,18 +13260,9 @@ body {
   height: 50px;
 }
 
-img {
-  max-width: 244px;
-  max-height: 365px;
-}
-
 .search-form {
   margin: auto auto 20px;
   width: 50% !important;
-}
-
-.list-row {
-  margin-left: 0 !important;
 }
 
 :root, [data-bs-theme="light"] {
