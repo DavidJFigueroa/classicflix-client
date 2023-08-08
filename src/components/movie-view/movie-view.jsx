@@ -16,58 +16,29 @@ export const MovieView = () => {
     <Container>
       <Row>
         <Col>
-          <Row>
-            <Col>
-              <Card.Img
-                className="d-block mx-auto"
-                id="movie-img"
-                src={movie.ImagePath}
-                alt="movie-img"
-              />
-            </Col>
-          </Row>
-
-          <Col>
-            <div style={{textAlign: "center"}}>
-              <span>
-                <b>
-                  <i>Title: </i>
-                </b>
-              </span>
-              <span>{movie.Title}</span>
-            </div>
-            <div id="div-description" style={{textAlign: "center"}}>
-              <span>
-                <b>
-                  <i>Description: </i>
-                </b>
-              </span>
-              <span>{movie.Description}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                {" "}
-                <b>
-                  <i>Director: </i>
-                </b>
-              </span>
-              <span>{movie.Director.Name}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                {" "}
-                <b>
-                  <i>Genre: </i>
-                </b>
-              </span>
-              <span>{movie.Genre.Name}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <Link to={"/"}>
-                <Button id="backbutton">Back</Button>
-              </Link>
-            </div>
-          </Col>
+          <Card.Img
+            // className="d-block mx-auto"
+            id="movie-img"
+            src={movie.ImagePath}
+            alt="movie-img"
+          />
+          <div>
+            <h1>{movie.Title}</h1>
+          </div>
+          <div>
+            <h3>{movie.Director.Name}</h3>
+          </div>
+          <div>
+            <b>{movie.Genre.Name}</b>
+          </div>
+          <div id="div-description">
+            <span>{movie.Description}</span>
+          </div>
+          <div>
+            <Link to={"/"}>
+              <Button id="backbutton">Back</Button>
+            </Link>
+          </div>
         </Col>
       </Row>
     </Container>

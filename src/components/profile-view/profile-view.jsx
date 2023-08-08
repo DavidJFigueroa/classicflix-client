@@ -48,7 +48,7 @@ export const ProfileView = ({removeFavorite, handleLogout}) => {
       })
       .then((user) => {
         localStorage.setItem("user", JSON.stringify(data));
-        setUser(user);
+        dispatch(setUser(user));
       });
   };
 
@@ -94,7 +94,6 @@ export const ProfileView = ({removeFavorite, handleLogout}) => {
           {" "}
           <UpdateUser
             handleSubmitUpdate={handleSubmitUpdate}
-            user={user}
             setUsername={setUsername}
             setEmail={setEmail}
             setPassword={setPassword}
@@ -104,7 +103,7 @@ export const ProfileView = ({removeFavorite, handleLogout}) => {
       </Row>
       <Row>
         <Col>
-          <FavoriteMovies user={user} removeFavorite={removeFavorite} />
+          <FavoriteMovies removeFavorite={removeFavorite} />
         </Col>
       </Row>
     </Container>
@@ -113,7 +112,7 @@ export const ProfileView = ({removeFavorite, handleLogout}) => {
 
 ProfileView.propTypes = {
   movies: PropTypes.object,
-  user: PropTypes.object,
+
   token: PropTypes.string,
   removeFavorite: PropTypes.func,
   handleLogout: PropTypes.func,

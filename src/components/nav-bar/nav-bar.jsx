@@ -22,7 +22,7 @@ export const NavigationBar = () => {
           className="navbar navbar-custom mb-3 text-white">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
-              <img src="{MyLogo}" alt="mylogo" />
+              <img src={MyLogo} alt="mylogo" className="mylogo" />
             </Navbar.Brand>
             <Navbar.Brand as={Link} to="/">
               Classic Flix

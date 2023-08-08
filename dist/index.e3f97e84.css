@@ -13256,6 +13256,10 @@ body {
   color: #fff !important;
 }
 
+.mylogo {
+  height: 50px;
+}
+
 #logoutbutton {
   width: 200px;
   margin: 20px;
