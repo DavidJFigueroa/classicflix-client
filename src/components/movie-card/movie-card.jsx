@@ -7,8 +7,8 @@ import {useSelector} from "react-redux";
 import "./movie-card.scss";
 
 export const MovieCard = ({movie, removeFavorite, addToFavorite}) => {
-  const movies = useSelector((state) => state.movies.list);
   const user = useSelector((state) => state.user);
+
   return (
     <Card className="h-100">
       <div style={{textAlign: "center"}}>
@@ -71,6 +71,11 @@ MovieCard.propTypes = {
     Genre: PropTypes.shape({
       Name: PropTypes.string,
     }),
+  }),
+  user: PropTypes.shape({
+    Username: PropTypes.string,
+    Email: PropTypes.string,
+    FavoriteMovies: PropTypes.string,
   }),
   removeFavorite: PropTypes.func,
   addToFavorite: PropTypes.func,

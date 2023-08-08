@@ -3,8 +3,9 @@ import {useSelector, useDispatch} from "react-redux";
 import {setMovies} from "../../redux/reducers/movies";
 import {setUser} from "../../redux/reducers/user";
 import {setToken} from "../../redux/reducers/token";
-import {MovieCard} from "../movie-card/movie-card";
+// import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
+import {MoviesList} from "../movies-list/movies-list";
 import {LoginView} from "../login-view/login-view";
 import {SignupView} from "../signup-view/signup-view";
 import {NavigationBar} from "../nav-bar/nav-bar";
@@ -18,8 +19,6 @@ export const MainView = () => {
   const movies = useSelector((state) => state.movies.list);
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.token);
-
-
 
   const dispatch = useDispatch();
 
@@ -154,31 +153,12 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to="/signup" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Navigate to="/login" replace />
                 ) : (
-                  <>
-                    {movies.map((movie) => (
-                      <Col
-                        className="mb-5"
-                        xs={7}
-                        sm={6}
-                        md={4}
-                        lg={3}
-                        key={movie._id}>
-                        <MovieCard
-                          key={movie._id}
-                          movie={movie}
-                          // movies={movies}
-                          user={user}
-                          // setUser={setUser}
-                          addToFavorite={addToFavorite}
-                          removeFavorite={removeFavorite}
-                        />
-                      </Col>
-                    ))}
-                  </>
+                  <MoviesList
+                    addToFavorite={addToFavorite}
+                    removeFavorite={removeFavorite}
+                  />
                 )}
               </>
             }
@@ -190,9 +170,6 @@ export const MainView = () => {
                 {user ? (
                   <Col>
                     <ProfileView
-                      // setUser={setUser}
-                      token={token}
-                      // movies={movies}
                       removeFavorite={removeFavorite}
                       handleLogout={handleLogout}
                     />
