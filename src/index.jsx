@@ -5,14 +5,18 @@ import {Provider} from "react-redux";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.scss";
+import {PersistGate} from "redux-persist/integration/react";
+import {store, persistor} from "./redux/store";
 
 // Main component (will eventually use all the others)
 const ClassicFlixApplication = () => {
   return (
     <Provider store={store}>
-      <Container>
-        <MainView />
-      </Container>
+      <PersistGate loading={null} persistor={persistor}>
+        <Container>
+          <MainView />
+        </Container>
+      </PersistGate>
     </Provider>
   );
 };

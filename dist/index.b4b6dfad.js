@@ -2951,24 +2951,33 @@ var _container = require("react-bootstrap/Container");
 var _containerDefault = parcelHelpers.interopDefault(_container);
 var _bootstrapMinCss = require("bootstrap/dist/css/bootstrap.min.css");
 var _indexScss = require("./index.scss");
+var _react = require("redux-persist/integration/react");
 // Main component (will eventually use all the others)
 const ClassicFlixApplication = ()=>{
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactRedux.Provider), {
         store: (0, _store.store),
-        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
-            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
+        children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _react.PersistGate), {
+            loading: null,
+            persistor: (0, _store.persistor),
+            children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
+                children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _mainView.MainView), {}, void 0, false, {
+                    fileName: "src/index.jsx",
+                    lineNumber: 17,
+                    columnNumber: 11
+                }, undefined)
+            }, void 0, false, {
                 fileName: "src/index.jsx",
-                lineNumber: 14,
+                lineNumber: 16,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/index.jsx",
-            lineNumber: 13,
+            lineNumber: 15,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/index.jsx",
-        lineNumber: 12,
+        lineNumber: 14,
         columnNumber: 5
     }, undefined);
 };
@@ -2979,7 +2988,7 @@ const root = (0, _client.createRoot)(container);
 // Tells React to render your app in the root DOM element
 root.render(/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)(ClassicFlixApplication, {}, void 0, false, {
     fileName: "src/index.jsx",
-    lineNumber: 25,
+    lineNumber: 29,
     columnNumber: 13
 }, undefined));
 var _c;
@@ -2990,7 +2999,7 @@ $RefreshReg$(_c, "ClassicFlixApplication");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./redux/store":"bDp2K","react-redux":"bdVon","react-bootstrap/Container":"hEdsw","bootstrap/dist/css/bootstrap.min.css":"i5LP7","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa"}],"iTorj":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react-dom/client":"lOjBx","./components/main-view/main-view":"4gflv","./redux/store":"bDp2K","react-redux":"bdVon","react-bootstrap/Container":"hEdsw","bootstrap/dist/css/bootstrap.min.css":"i5LP7","./index.scss":"lJZlQ","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"68RBa","redux-persist/integration/react":"5TqVL"}],"iTorj":[function(require,module,exports) {
 "use strict";
 module.exports = require("ee51401569654d91");
 
@@ -52679,9 +52688,9 @@ const LoginView = ()=>{
             if (data.user) {
                 dispatch((0, _user.setUser)(data.user));
                 dispatch((0, _token.setToken)(data.token));
-                console.log(data);
-                localStorage.setItem("user", JSON.stringify(data.user));
-                localStorage.setItem("token", data.token);
+            // console.log(data);
+            // localStorage.setItem("user", JSON.stringify(data.user));
+            // localStorage.setItem("token", data.token);
             } else alert("No such user");
         }).catch((error)=>{
             alert("Something went wrong:" + error);
@@ -53924,6 +53933,7 @@ $RefreshReg$(_c, "UpdateUser");
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "store", ()=>store);
+parcelHelpers.export(exports, "persistor", ()=>persistor);
 var _toolkit = require("@reduxjs/toolkit");
 var _movies = require("./reducers/movies");
 var _moviesDefault = parcelHelpers.interopDefault(_movies);
@@ -53931,14 +53941,980 @@ var _user = require("./reducers/user");
 var _userDefault = parcelHelpers.interopDefault(_user);
 var _token = require("./reducers/token");
 var _tokenDefault = parcelHelpers.interopDefault(_token);
+var _reduxPersist = require("redux-persist");
+var _storage = require("redux-persist/lib/storage");
+var _storageDefault = parcelHelpers.interopDefault(_storage);
+var _redux = require("redux");
+const persistConfig = {
+    key: "root",
+    storage: (0, _storageDefault.default)
+};
+const persistedReducer = (0, _reduxPersist.persistReducer)(persistConfig, (0, _redux.combineReducers)({
+    movies: (0, _moviesDefault.default),
+    user: (0, _userDefault.default),
+    token: (0, _tokenDefault.default)
+}));
 const store = (0, _toolkit.configureStore)({
-    reducer: {
-        movies: (0, _moviesDefault.default),
-        user: (0, _userDefault.default),
-        token: (0, _tokenDefault.default)
+    reducer: persistedReducer
+});
+const persistor = (0, _reduxPersist.persistStore)(store);
+
+},{"@reduxjs/toolkit":"lL1Ef","./reducers/movies":"l0qwl","./reducers/user":"e6tdF","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","./reducers/token":"4eTad","redux-persist":"bx0vU","redux-persist/lib/storage":"5o1jm","redux":"cDNB3"}],"bx0vU":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "persistReducer", ()=>(0, _persistReducerDefault.default));
+parcelHelpers.export(exports, "persistCombineReducers", ()=>(0, _persistCombineReducersDefault.default));
+parcelHelpers.export(exports, "persistStore", ()=>(0, _persistStoreDefault.default));
+parcelHelpers.export(exports, "createMigrate", ()=>(0, _createMigrateDefault.default));
+parcelHelpers.export(exports, "createTransform", ()=>(0, _createTransformDefault.default));
+parcelHelpers.export(exports, "getStoredState", ()=>(0, _getStoredStateDefault.default));
+parcelHelpers.export(exports, "createPersistoid", ()=>(0, _createPersistoidDefault.default));
+parcelHelpers.export(exports, "purgeStoredState", ()=>(0, _purgeStoredStateDefault.default));
+var _persistReducer = require("./persistReducer");
+var _persistReducerDefault = parcelHelpers.interopDefault(_persistReducer);
+var _persistCombineReducers = require("./persistCombineReducers");
+var _persistCombineReducersDefault = parcelHelpers.interopDefault(_persistCombineReducers);
+var _persistStore = require("./persistStore");
+var _persistStoreDefault = parcelHelpers.interopDefault(_persistStore);
+var _createMigrate = require("./createMigrate");
+var _createMigrateDefault = parcelHelpers.interopDefault(_createMigrate);
+var _createTransform = require("./createTransform");
+var _createTransformDefault = parcelHelpers.interopDefault(_createTransform);
+var _getStoredState = require("./getStoredState");
+var _getStoredStateDefault = parcelHelpers.interopDefault(_getStoredState);
+var _createPersistoid = require("./createPersistoid");
+var _createPersistoidDefault = parcelHelpers.interopDefault(_createPersistoid);
+var _purgeStoredState = require("./purgeStoredState");
+var _purgeStoredStateDefault = parcelHelpers.interopDefault(_purgeStoredState);
+var _constants = require("./constants");
+parcelHelpers.exportAll(_constants, exports);
+
+},{"./persistReducer":"9qFLX","./persistCombineReducers":"5MpKh","./persistStore":"cWd7D","./createMigrate":"ROm8K","./createTransform":"2hGKs","./getStoredState":"jG6oA","./createPersistoid":"cPLsO","./purgeStoredState":"hY2vm","./constants":"lVkgs","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"9qFLX":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>persistReducer);
+var _constants = require("./constants");
+var _autoMergeLevel1 = require("./stateReconciler/autoMergeLevel1");
+var _autoMergeLevel1Default = parcelHelpers.interopDefault(_autoMergeLevel1);
+var _createPersistoid = require("./createPersistoid");
+var _createPersistoidDefault = parcelHelpers.interopDefault(_createPersistoid);
+var _getStoredState = require("./getStoredState");
+var _getStoredStateDefault = parcelHelpers.interopDefault(_getStoredState);
+var _purgeStoredState = require("./purgeStoredState");
+var _purgeStoredStateDefault = parcelHelpers.interopDefault(_purgeStoredState);
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) symbols = symbols.filter(function(sym) {
+            return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+        keys.push.apply(keys, symbols);
     }
+    return keys;
+}
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        if (i % 2) ownKeys(source, true).forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+        else if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+        else ownKeys(source).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _defineProperty(obj, key, value) {
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+function _objectWithoutProperties(source, excluded) {
+    if (source == null) return {};
+    var target = _objectWithoutPropertiesLoose(source, excluded);
+    var key, i;
+    if (Object.getOwnPropertySymbols) {
+        var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+        for(i = 0; i < sourceSymbolKeys.length; i++){
+            key = sourceSymbolKeys[i];
+            if (excluded.indexOf(key) >= 0) continue;
+            if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue;
+            target[key] = source[key];
+        }
+    }
+    return target;
+}
+function _objectWithoutPropertiesLoose(source, excluded) {
+    if (source == null) return {};
+    var target = {};
+    var sourceKeys = Object.keys(source);
+    var key, i;
+    for(i = 0; i < sourceKeys.length; i++){
+        key = sourceKeys[i];
+        if (excluded.indexOf(key) >= 0) continue;
+        target[key] = source[key];
+    }
+    return target;
+}
+var DEFAULT_TIMEOUT = 5000;
+function persistReducer(config, baseReducer) {
+    if (!config) throw new Error("config is required for persistReducer");
+    if (!config.key) throw new Error("key is required in persistor config");
+    if (!config.storage) throw new Error("redux-persist: config.storage is required. Try using one of the provided storage engines `import storage from 'redux-persist/lib/storage'`");
+    var version = config.version !== undefined ? config.version : (0, _constants.DEFAULT_VERSION);
+    var debug = config.debug || false;
+    var stateReconciler = config.stateReconciler === undefined ? (0, _autoMergeLevel1Default.default) : config.stateReconciler;
+    var getStoredState = config.getStoredState || (0, _getStoredStateDefault.default);
+    var timeout = config.timeout !== undefined ? config.timeout : DEFAULT_TIMEOUT;
+    var _persistoid = null;
+    var _purge = false;
+    var _paused = true;
+    var conditionalUpdate = function conditionalUpdate(state) {
+        // update the persistoid only if we are rehydrated and not paused
+        state._persist.rehydrated && _persistoid && !_paused && _persistoid.update(state);
+        return state;
+    };
+    return function(state, action) {
+        var _ref = state || {}, _persist = _ref._persist, rest = _objectWithoutProperties(_ref, [
+            "_persist"
+        ]); // $FlowIgnore need to update State type
+        var restState = rest;
+        if (action.type === (0, _constants.PERSIST)) {
+            var _sealed = false;
+            var _rehydrate = function _rehydrate(payload, err) {
+                // dev warning if we are already sealed
+                if (_sealed) console.error('redux-persist: rehydrate for "'.concat(config.key, '" called after timeout.'), payload, err); // only rehydrate if we are not already sealed
+                if (!_sealed) {
+                    action.rehydrate(config.key, payload, err);
+                    _sealed = true;
+                }
+            };
+            timeout && setTimeout(function() {
+                !_sealed && _rehydrate(undefined, new Error('redux-persist: persist timed out for persist key "'.concat(config.key, '"')));
+            }, timeout); // @NOTE PERSIST resumes if paused.
+            _paused = false; // @NOTE only ever create persistoid once, ensure we call it at least once, even if _persist has already been set
+            if (!_persistoid) _persistoid = (0, _createPersistoidDefault.default)(config); // @NOTE PERSIST can be called multiple times, noop after the first
+            if (_persist) // We still need to call the base reducer because there might be nested
+            // uses of persistReducer which need to be aware of the PERSIST action
+            return _objectSpread({}, baseReducer(restState, action), {
+                _persist: _persist
+            });
+            if (typeof action.rehydrate !== "function" || typeof action.register !== "function") throw new Error("redux-persist: either rehydrate or register is not a function on the PERSIST action. This can happen if the action is being replayed. This is an unexplored use case, please open an issue and we will figure out a resolution.");
+            action.register(config.key);
+            getStoredState(config).then(function(restoredState) {
+                var migrate = config.migrate || function(s, v) {
+                    return Promise.resolve(s);
+                };
+                migrate(restoredState, version).then(function(migratedState) {
+                    _rehydrate(migratedState);
+                }, function(migrateErr) {
+                    if (migrateErr) console.error("redux-persist: migration error", migrateErr);
+                    _rehydrate(undefined, migrateErr);
+                });
+            }, function(err) {
+                _rehydrate(undefined, err);
+            });
+            return _objectSpread({}, baseReducer(restState, action), {
+                _persist: {
+                    version: version,
+                    rehydrated: false
+                }
+            });
+        } else if (action.type === (0, _constants.PURGE)) {
+            _purge = true;
+            action.result((0, _purgeStoredStateDefault.default)(config));
+            return _objectSpread({}, baseReducer(restState, action), {
+                _persist: _persist
+            });
+        } else if (action.type === (0, _constants.FLUSH)) {
+            action.result(_persistoid && _persistoid.flush());
+            return _objectSpread({}, baseReducer(restState, action), {
+                _persist: _persist
+            });
+        } else if (action.type === (0, _constants.PAUSE)) _paused = true;
+        else if (action.type === (0, _constants.REHYDRATE)) {
+            // noop on restState if purging
+            if (_purge) return _objectSpread({}, restState, {
+                _persist: _objectSpread({}, _persist, {
+                    rehydrated: true
+                }) // @NOTE if key does not match, will continue to default else below
+            });
+            if (action.key === config.key) {
+                var reducedState = baseReducer(restState, action);
+                var inboundState = action.payload; // only reconcile state if stateReconciler and inboundState are both defined
+                var reconciledRest = stateReconciler !== false && inboundState !== undefined ? stateReconciler(inboundState, state, reducedState, config) : reducedState;
+                var _newState = _objectSpread({}, reconciledRest, {
+                    _persist: _objectSpread({}, _persist, {
+                        rehydrated: true
+                    })
+                });
+                return conditionalUpdate(_newState);
+            }
+        } // if we have not already handled PERSIST, straight passthrough
+        if (!_persist) return baseReducer(state, action); // run base reducer:
+        // is state modified ? return original : return updated
+        var newState = baseReducer(restState, action);
+        if (newState === restState) return state;
+        return conditionalUpdate(_objectSpread({}, newState, {
+            _persist: _persist
+        }));
+    };
+}
+
+},{"./constants":"lVkgs","./stateReconciler/autoMergeLevel1":"7HfeF","./createPersistoid":"cPLsO","./getStoredState":"jG6oA","./purgeStoredState":"hY2vm","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"lVkgs":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "KEY_PREFIX", ()=>KEY_PREFIX);
+parcelHelpers.export(exports, "FLUSH", ()=>FLUSH);
+parcelHelpers.export(exports, "REHYDRATE", ()=>REHYDRATE);
+parcelHelpers.export(exports, "PAUSE", ()=>PAUSE);
+parcelHelpers.export(exports, "PERSIST", ()=>PERSIST);
+parcelHelpers.export(exports, "PURGE", ()=>PURGE);
+parcelHelpers.export(exports, "REGISTER", ()=>REGISTER);
+parcelHelpers.export(exports, "DEFAULT_VERSION", ()=>DEFAULT_VERSION);
+var KEY_PREFIX = "persist:";
+var FLUSH = "persist/FLUSH";
+var REHYDRATE = "persist/REHYDRATE";
+var PAUSE = "persist/PAUSE";
+var PERSIST = "persist/PERSIST";
+var PURGE = "persist/PURGE";
+var REGISTER = "persist/REGISTER";
+var DEFAULT_VERSION = -1;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"7HfeF":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>autoMergeLevel1);
+function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") _typeof = function _typeof(obj) {
+        return typeof obj;
+    };
+    else _typeof = function _typeof(obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+    return _typeof(obj);
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) symbols = symbols.filter(function(sym) {
+            return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        if (i % 2) ownKeys(source, true).forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+        else if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+        else ownKeys(source).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _defineProperty(obj, key, value) {
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+function autoMergeLevel1(inboundState, originalState, reducedState, _ref) {
+    var debug = _ref.debug;
+    var newState = _objectSpread({}, reducedState); // only rehydrate if inboundState exists and is an object
+    if (inboundState && _typeof(inboundState) === "object") Object.keys(inboundState).forEach(function(key) {
+        // ignore _persist data
+        if (key === "_persist") return; // if reducer modifies substate, skip auto rehydration
+        if (originalState[key] !== reducedState[key]) {
+            if (debug) console.log("redux-persist/stateReconciler: sub state for key `%s` modified, skipping.", key);
+            return;
+        } // otherwise hard set the new value
+        newState[key] = inboundState[key];
+    });
+    if (debug && inboundState && _typeof(inboundState) === "object") console.log("redux-persist/stateReconciler: rehydrated keys '".concat(Object.keys(inboundState).join(", "), "'"));
+    return newState;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"cPLsO":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>createPersistoid);
+var _constants = require("./constants");
+function createPersistoid(config) {
+    // defaults
+    var blacklist = config.blacklist || null;
+    var whitelist = config.whitelist || null;
+    var transforms = config.transforms || [];
+    var throttle = config.throttle || 0;
+    var storageKey = "".concat(config.keyPrefix !== undefined ? config.keyPrefix : (0, _constants.KEY_PREFIX)).concat(config.key);
+    var storage = config.storage;
+    var serialize;
+    if (config.serialize === false) serialize = function serialize(x) {
+        return x;
+    };
+    else if (typeof config.serialize === "function") serialize = config.serialize;
+    else serialize = defaultSerialize;
+    var writeFailHandler = config.writeFailHandler || null; // initialize stateful values
+    var lastState = {};
+    var stagedState = {};
+    var keysToProcess = [];
+    var timeIterator = null;
+    var writePromise = null;
+    var update = function update(state) {
+        // add any changed keys to the queue
+        Object.keys(state).forEach(function(key) {
+            if (!passWhitelistBlacklist(key)) return; // is keyspace ignored? noop
+            if (lastState[key] === state[key]) return; // value unchanged? noop
+            if (keysToProcess.indexOf(key) !== -1) return; // is key already queued? noop
+            keysToProcess.push(key); // add key to queue
+        }); //if any key is missing in the new state which was present in the lastState,
+        //add it for processing too
+        Object.keys(lastState).forEach(function(key) {
+            if (state[key] === undefined && passWhitelistBlacklist(key) && keysToProcess.indexOf(key) === -1 && lastState[key] !== undefined) keysToProcess.push(key);
+        }); // start the time iterator if not running (read: throttle)
+        if (timeIterator === null) timeIterator = setInterval(processNextKey, throttle);
+        lastState = state;
+    };
+    function processNextKey() {
+        if (keysToProcess.length === 0) {
+            if (timeIterator) clearInterval(timeIterator);
+            timeIterator = null;
+            return;
+        }
+        var key = keysToProcess.shift();
+        var endState = transforms.reduce(function(subState, transformer) {
+            return transformer.in(subState, key, lastState);
+        }, lastState[key]);
+        if (endState !== undefined) try {
+            stagedState[key] = serialize(endState);
+        } catch (err) {
+            console.error("redux-persist/createPersistoid: error serializing state", err);
+        }
+        else //if the endState is undefined, no need to persist the existing serialized content
+        delete stagedState[key];
+        if (keysToProcess.length === 0) writeStagedState();
+    }
+    function writeStagedState() {
+        // cleanup any removed keys just before write.
+        Object.keys(stagedState).forEach(function(key) {
+            if (lastState[key] === undefined) delete stagedState[key];
+        });
+        writePromise = storage.setItem(storageKey, serialize(stagedState)).catch(onWriteFail);
+    }
+    function passWhitelistBlacklist(key) {
+        if (whitelist && whitelist.indexOf(key) === -1 && key !== "_persist") return false;
+        if (blacklist && blacklist.indexOf(key) !== -1) return false;
+        return true;
+    }
+    function onWriteFail(err) {
+        // @TODO add fail handlers (typically storage full)
+        if (writeFailHandler) writeFailHandler(err);
+        if (err && true) console.error("Error storing data", err);
+    }
+    var flush = function flush() {
+        while(keysToProcess.length !== 0)processNextKey();
+        return writePromise || Promise.resolve();
+    }; // return `persistoid`
+    return {
+        update: update,
+        flush: flush
+    };
+} // @NOTE in the future this may be exposed via config
+function defaultSerialize(data) {
+    return JSON.stringify(data);
+}
+
+},{"./constants":"lVkgs","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"jG6oA":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>getStoredState);
+var _constants = require("./constants");
+function getStoredState(config) {
+    var transforms = config.transforms || [];
+    var storageKey = "".concat(config.keyPrefix !== undefined ? config.keyPrefix : (0, _constants.KEY_PREFIX)).concat(config.key);
+    var storage = config.storage;
+    var debug = config.debug;
+    var deserialize;
+    if (config.deserialize === false) deserialize = function deserialize(x) {
+        return x;
+    };
+    else if (typeof config.deserialize === "function") deserialize = config.deserialize;
+    else deserialize = defaultDeserialize;
+    return storage.getItem(storageKey).then(function(serialized) {
+        if (!serialized) return undefined;
+        else try {
+            var state = {};
+            var rawState = deserialize(serialized);
+            Object.keys(rawState).forEach(function(key) {
+                state[key] = transforms.reduceRight(function(subState, transformer) {
+                    return transformer.out(subState, key, rawState);
+                }, deserialize(rawState[key]));
+            });
+            return state;
+        } catch (err) {
+            if (debug) console.log("redux-persist/getStoredState: Error restoring data ".concat(serialized), err);
+            throw err;
+        }
+    });
+}
+function defaultDeserialize(serial) {
+    return JSON.parse(serial);
+}
+
+},{"./constants":"lVkgs","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"hY2vm":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>purgeStoredState);
+var _constants = require("./constants");
+function purgeStoredState(config) {
+    var storage = config.storage;
+    var storageKey = "".concat(config.keyPrefix !== undefined ? config.keyPrefix : (0, _constants.KEY_PREFIX)).concat(config.key);
+    return storage.removeItem(storageKey, warnIfRemoveError);
+}
+function warnIfRemoveError(err) {
+    if (err && true) console.error("redux-persist/purgeStoredState: Error purging data stored state", err);
+}
+
+},{"./constants":"lVkgs","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"5MpKh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>persistCombineReducers);
+var _redux = require("redux");
+var _persistReducer = require("./persistReducer");
+var _persistReducerDefault = parcelHelpers.interopDefault(_persistReducer);
+var _autoMergeLevel2 = require("./stateReconciler/autoMergeLevel2");
+var _autoMergeLevel2Default = parcelHelpers.interopDefault(_autoMergeLevel2);
+function persistCombineReducers(config, reducers) {
+    config.stateReconciler = config.stateReconciler === undefined ? (0, _autoMergeLevel2Default.default) : config.stateReconciler;
+    return (0, _persistReducerDefault.default)(config, (0, _redux.combineReducers)(reducers));
+}
+
+},{"redux":"cDNB3","./persistReducer":"9qFLX","./stateReconciler/autoMergeLevel2":"6urdB","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"6urdB":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>autoMergeLevel2);
+function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") _typeof = function _typeof(obj) {
+        return typeof obj;
+    };
+    else _typeof = function _typeof(obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+    return _typeof(obj);
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) symbols = symbols.filter(function(sym) {
+            return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        if (i % 2) ownKeys(source, true).forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+        else if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+        else ownKeys(source).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _defineProperty(obj, key, value) {
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+function autoMergeLevel2(inboundState, originalState, reducedState, _ref) {
+    var debug = _ref.debug;
+    var newState = _objectSpread({}, reducedState); // only rehydrate if inboundState exists and is an object
+    if (inboundState && _typeof(inboundState) === "object") Object.keys(inboundState).forEach(function(key) {
+        // ignore _persist data
+        if (key === "_persist") return; // if reducer modifies substate, skip auto rehydration
+        if (originalState[key] !== reducedState[key]) {
+            if (debug) console.log("redux-persist/stateReconciler: sub state for key `%s` modified, skipping.", key);
+            return;
+        }
+        if (isPlainEnoughObject(reducedState[key])) {
+            // if object is plain enough shallow merge the new values (hence "Level2")
+            newState[key] = _objectSpread({}, newState[key], {}, inboundState[key]);
+            return;
+        } // otherwise hard set
+        newState[key] = inboundState[key];
+    });
+    if (debug && inboundState && _typeof(inboundState) === "object") console.log("redux-persist/stateReconciler: rehydrated keys '".concat(Object.keys(inboundState).join(", "), "'"));
+    return newState;
+}
+function isPlainEnoughObject(o) {
+    return o !== null && !Array.isArray(o) && _typeof(o) === "object";
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"cWd7D":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>persistStore);
+var _redux = require("redux");
+var _constants = require("./constants");
+function _toConsumableArray(arr) {
+    return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+}
+function _nonIterableSpread() {
+    throw new TypeError("Invalid attempt to spread non-iterable instance");
+}
+function _iterableToArray(iter) {
+    if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+}
+function _arrayWithoutHoles(arr) {
+    if (Array.isArray(arr)) {
+        for(var i = 0, arr2 = new Array(arr.length); i < arr.length; i++)arr2[i] = arr[i];
+        return arr2;
+    }
+}
+function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+    if (Object.getOwnPropertySymbols) {
+        var symbols = Object.getOwnPropertySymbols(object);
+        if (enumerableOnly) symbols = symbols.filter(function(sym) {
+            return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+        });
+        keys.push.apply(keys, symbols);
+    }
+    return keys;
+}
+function _objectSpread(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        if (i % 2) ownKeys(source, true).forEach(function(key) {
+            _defineProperty(target, key, source[key]);
+        });
+        else if (Object.getOwnPropertyDescriptors) Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+        else ownKeys(source).forEach(function(key) {
+            Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
+    }
+    return target;
+}
+function _defineProperty(obj, key, value) {
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+var initialState = {
+    registry: [],
+    bootstrapped: false
+};
+var persistorReducer = function persistorReducer() {
+    var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : initialState;
+    var action = arguments.length > 1 ? arguments[1] : undefined;
+    switch(action.type){
+        case 0, _constants.REGISTER:
+            return _objectSpread({}, state, {
+                registry: [].concat(_toConsumableArray(state.registry), [
+                    action.key
+                ])
+            });
+        case 0, _constants.REHYDRATE:
+            var firstIndex = state.registry.indexOf(action.key);
+            var registry = _toConsumableArray(state.registry);
+            registry.splice(firstIndex, 1);
+            return _objectSpread({}, state, {
+                registry: registry,
+                bootstrapped: registry.length === 0
+            });
+        default:
+            return state;
+    }
+};
+function persistStore(store, options, cb) {
+    var optionsToTest = options || {};
+    var bannedKeys = [
+        "blacklist",
+        "whitelist",
+        "transforms",
+        "storage",
+        "keyPrefix",
+        "migrate"
+    ];
+    bannedKeys.forEach(function(k) {
+        if (!!optionsToTest[k]) console.error('redux-persist: invalid option passed to persistStore: "'.concat(k, '". You may be incorrectly passing persistConfig into persistStore, whereas it should be passed into persistReducer.'));
+    });
+    var boostrappedCb = cb || false;
+    var _pStore = (0, _redux.createStore)(persistorReducer, initialState, options && options.enhancer ? options.enhancer : undefined);
+    var register = function register(key) {
+        _pStore.dispatch({
+            type: (0, _constants.REGISTER),
+            key: key
+        });
+    };
+    var rehydrate = function rehydrate(key, payload, err) {
+        var rehydrateAction = {
+            type: (0, _constants.REHYDRATE),
+            payload: payload,
+            err: err,
+            key: key // dispatch to `store` to rehydrate and `persistor` to track result
+        };
+        store.dispatch(rehydrateAction);
+        _pStore.dispatch(rehydrateAction);
+        if (boostrappedCb && persistor.getState().bootstrapped) {
+            boostrappedCb();
+            boostrappedCb = false;
+        }
+    };
+    var persistor = _objectSpread({}, _pStore, {
+        purge: function purge() {
+            var results = [];
+            store.dispatch({
+                type: (0, _constants.PURGE),
+                result: function result(purgeResult) {
+                    results.push(purgeResult);
+                }
+            });
+            return Promise.all(results);
+        },
+        flush: function flush() {
+            var results = [];
+            store.dispatch({
+                type: (0, _constants.FLUSH),
+                result: function result(flushResult) {
+                    results.push(flushResult);
+                }
+            });
+            return Promise.all(results);
+        },
+        pause: function pause() {
+            store.dispatch({
+                type: (0, _constants.PAUSE)
+            });
+        },
+        persist: function persist() {
+            store.dispatch({
+                type: (0, _constants.PERSIST),
+                register: register,
+                rehydrate: rehydrate
+            });
+        }
+    });
+    if (!(options && options.manualPersist)) persistor.persist();
+    return persistor;
+}
+
+},{"redux":"cDNB3","./constants":"lVkgs","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"ROm8K":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>createMigrate);
+var _constants = require("./constants");
+function createMigrate(migrations, config) {
+    var _ref = config || {}, debug = _ref.debug;
+    return function(state, currentVersion) {
+        if (!state) {
+            if (debug) console.log("redux-persist: no inbound state, skipping migration");
+            return Promise.resolve(undefined);
+        }
+        var inboundVersion = state._persist && state._persist.version !== undefined ? state._persist.version : (0, _constants.DEFAULT_VERSION);
+        if (inboundVersion === currentVersion) {
+            if (debug) console.log("redux-persist: versions match, noop migration");
+            return Promise.resolve(state);
+        }
+        if (inboundVersion > currentVersion) {
+            console.error("redux-persist: downgrading version is not supported");
+            return Promise.resolve(state);
+        }
+        var migrationKeys = Object.keys(migrations).map(function(ver) {
+            return parseInt(ver);
+        }).filter(function(key) {
+            return currentVersion >= key && key > inboundVersion;
+        }).sort(function(a, b) {
+            return a - b;
+        });
+        if (debug) console.log("redux-persist: migrationKeys", migrationKeys);
+        try {
+            var migratedState = migrationKeys.reduce(function(state, versionKey) {
+                if (debug) console.log("redux-persist: running migration for versionKey", versionKey);
+                return migrations[versionKey](state);
+            }, state);
+            return Promise.resolve(migratedState);
+        } catch (err) {
+            return Promise.reject(err);
+        }
+    };
+}
+
+},{"./constants":"lVkgs","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"2hGKs":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "default", ()=>createTransform);
+function createTransform(inbound, outbound) {
+    var config = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
+    var whitelist = config.whitelist || null;
+    var blacklist = config.blacklist || null;
+    function whitelistBlacklistCheck(key) {
+        if (whitelist && whitelist.indexOf(key) === -1) return true;
+        if (blacklist && blacklist.indexOf(key) !== -1) return true;
+        return false;
+    }
+    return {
+        in: function _in(state, key, fullState) {
+            return !whitelistBlacklistCheck(key) && inbound ? inbound(state, key, fullState) : state;
+        },
+        out: function out(state, key, fullState) {
+            return !whitelistBlacklistCheck(key) && outbound ? outbound(state, key, fullState) : state;
+        }
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}],"5o1jm":[function(require,module,exports) {
+"use strict";
+exports.__esModule = true;
+exports.default = void 0;
+var _createWebStorage = _interopRequireDefault(require("566a036f96cb9270"));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+var _default = (0, _createWebStorage.default)("local");
+exports.default = _default;
+
+},{"566a036f96cb9270":"044Lg"}],"044Lg":[function(require,module,exports) {
+"use strict";
+exports.__esModule = true;
+exports.default = createWebStorage;
+var _getStorage = _interopRequireDefault(require("d5ab56750dbb65fc"));
+function _interopRequireDefault(obj) {
+    return obj && obj.__esModule ? obj : {
+        default: obj
+    };
+}
+function createWebStorage(type) {
+    var storage = (0, _getStorage.default)(type);
+    return {
+        getItem: function getItem(key) {
+            return new Promise(function(resolve, reject) {
+                resolve(storage.getItem(key));
+            });
+        },
+        setItem: function setItem(key, item) {
+            return new Promise(function(resolve, reject) {
+                resolve(storage.setItem(key, item));
+            });
+        },
+        removeItem: function removeItem(key) {
+            return new Promise(function(resolve, reject) {
+                resolve(storage.removeItem(key));
+            });
+        }
+    };
+}
+
+},{"d5ab56750dbb65fc":"6Dg7V"}],"6Dg7V":[function(require,module,exports) {
+"use strict";
+exports.__esModule = true;
+exports.default = getStorage;
+function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") _typeof = function _typeof(obj) {
+        return typeof obj;
+    };
+    else _typeof = function _typeof(obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+    return _typeof(obj);
+}
+function noop() {}
+var noopStorage = {
+    getItem: noop,
+    setItem: noop,
+    removeItem: noop
+};
+function hasStorage(storageType) {
+    if ((typeof self === "undefined" ? "undefined" : _typeof(self)) !== "object" || !(storageType in self)) return false;
+    try {
+        var storage = self[storageType];
+        var testKey = "redux-persist ".concat(storageType, " test");
+        storage.setItem(testKey, "test");
+        storage.getItem(testKey);
+        storage.removeItem(testKey);
+    } catch (e) {
+        console.warn("redux-persist ".concat(storageType, " test failed, persistence will be disabled."));
+        return false;
+    }
+    return true;
+}
+function getStorage(type) {
+    var storageType = "".concat(type, "Storage");
+    if (hasStorage(storageType)) return self[storageType];
+    else {
+        console.error("redux-persist failed to create sync storage. falling back to noop storage.");
+        return noopStorage;
+    }
+}
+
+},{}],"i5LP7":[function() {},{}],"lJZlQ":[function() {},{}],"5TqVL":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "PersistGate", ()=>PersistGate);
+var _react = require("react"); // eslint-disable-line import/no-unresolved
+var _reactDefault = parcelHelpers.interopDefault(_react);
+function _typeof(obj) {
+    if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") _typeof = function _typeof(obj) {
+        return typeof obj;
+    };
+    else _typeof = function _typeof(obj) {
+        return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+    };
+    return _typeof(obj);
+}
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) throw new TypeError("Cannot call a class as a function");
+}
+function _defineProperties(target, props) {
+    for(var i = 0; i < props.length; i++){
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+    }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+}
+function _possibleConstructorReturn(self, call) {
+    if (call && (_typeof(call) === "object" || typeof call === "function")) return call;
+    return _assertThisInitialized(self);
+}
+function _getPrototypeOf(o) {
+    _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) {
+        return o.__proto__ || Object.getPrototypeOf(o);
+    };
+    return _getPrototypeOf(o);
+}
+function _assertThisInitialized(self) {
+    if (self === void 0) throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+    return self;
+}
+function _inherits(subClass, superClass) {
+    if (typeof superClass !== "function" && superClass !== null) throw new TypeError("Super expression must either be null or a function");
+    subClass.prototype = Object.create(superClass && superClass.prototype, {
+        constructor: {
+            value: subClass,
+            writable: true,
+            configurable: true
+        }
+    });
+    if (superClass) _setPrototypeOf(subClass, superClass);
+}
+function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+        o.__proto__ = p;
+        return o;
+    };
+    return _setPrototypeOf(o, p);
+}
+function _defineProperty(obj, key, value) {
+    if (key in obj) Object.defineProperty(obj, key, {
+        value: value,
+        enumerable: true,
+        configurable: true,
+        writable: true
+    });
+    else obj[key] = value;
+    return obj;
+}
+var PersistGate = /*#__PURE__*/ function(_PureComponent) {
+    _inherits(PersistGate, _PureComponent);
+    function PersistGate() {
+        var _getPrototypeOf2;
+        var _this;
+        _classCallCheck(this, PersistGate);
+        for(var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++)args[_key] = arguments[_key];
+        _this = _possibleConstructorReturn(this, (_getPrototypeOf2 = _getPrototypeOf(PersistGate)).call.apply(_getPrototypeOf2, [
+            this
+        ].concat(args)));
+        _defineProperty(_assertThisInitialized(_this), "state", {
+            bootstrapped: false
+        });
+        _defineProperty(_assertThisInitialized(_this), "_unsubscribe", void 0);
+        _defineProperty(_assertThisInitialized(_this), "handlePersistorState", function() {
+            var persistor = _this.props.persistor;
+            var _persistor$getState = persistor.getState(), bootstrapped = _persistor$getState.bootstrapped;
+            if (bootstrapped) {
+                if (_this.props.onBeforeLift) Promise.resolve(_this.props.onBeforeLift()).finally(function() {
+                    return _this.setState({
+                        bootstrapped: true
+                    });
+                });
+                else _this.setState({
+                    bootstrapped: true
+                });
+                _this._unsubscribe && _this._unsubscribe();
+            }
+        });
+        return _this;
+    }
+    _createClass(PersistGate, [
+        {
+            key: "componentDidMount",
+            value: function componentDidMount() {
+                this._unsubscribe = this.props.persistor.subscribe(this.handlePersistorState);
+                this.handlePersistorState();
+            }
+        },
+        {
+            key: "componentWillUnmount",
+            value: function componentWillUnmount() {
+                this._unsubscribe && this._unsubscribe();
+            }
+        },
+        {
+            key: "render",
+            value: function render() {
+                if (typeof this.props.children === "function" && this.props.loading) console.error("redux-persist: PersistGate expects either a function child or loading prop, but not both. The loading prop will be ignored.");
+                if (typeof this.props.children === "function") return this.props.children(this.state.bootstrapped);
+                return this.state.bootstrapped ? this.props.children : this.props.loading;
+            }
+        }
+    ]);
+    return PersistGate;
+}((0, _react.PureComponent));
+_defineProperty(PersistGate, "defaultProps", {
+    children: null,
+    loading: null
 });
 
-},{"@reduxjs/toolkit":"lL1Ef","./reducers/movies":"l0qwl","./reducers/user":"e6tdF","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6","./reducers/token":"4eTad"}],"i5LP7":[function() {},{}],"lJZlQ":[function() {},{}]},["9kujA","dGocb","d8Dch"], "d8Dch", "parcelRequirea9e5")
+},{"react":"21dqq","@parcel/transformer-js/src/esmodule-helpers.js":"jUvI6"}]},["9kujA","dGocb","d8Dch"], "d8Dch", "parcelRequirea9e5")
 
 //# sourceMappingURL=index.b4b6dfad.js.map
