@@ -39,7 +39,7 @@ export const LoginView = () => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
-          dispatch(setUser(JSON.stringify(data.user)));
+          dispatch(setUser(data.user));
           dispatch(setToken(data.token));
         } else {
           alert("No such user");
