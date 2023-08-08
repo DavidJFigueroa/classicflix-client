@@ -20,7 +20,8 @@ To build and run the project, use the following command in the project root dire
 `parcel src/index.html` 
 
 ##  Dependencies
- `    "bootstrap": "^5.3.0", 
+
+    `"bootstrap": "^5.3.0", 
     "node-sass": "^9.0.0",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -30,8 +31,6 @@ To build and run the project, use the following command in the project root dire
     "react-router": "^6.14.2",
     "react-router-dom": "^6.14.2",
     "redux-persist": "^6.0.0"`
-
-
 
 
 
