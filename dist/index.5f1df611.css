@@ -4,7 +4,7 @@
 }
 
 #backbutton {
-  margin: 20px;
+  margin-top: 20px;
 }
 
 #div-description {
@@ -16,6 +16,15 @@
 .col-md-8 {
   text-align: center;
   margin: auto;
+}
+
+.btn-secondary {
+  margin: 20px;
+}
+
+.button-div {
+  justify-content: center;
+  display: flex;
 }
 
 :root, [data-bs-theme="light"] {
@@ -13263,6 +13272,11 @@ img {
 .search-form {
   margin: auto auto 20px;
   width: 50% !important;
+}
+
+.similiar-h3 {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 :root, [data-bs-theme="light"] {

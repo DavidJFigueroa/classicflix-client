@@ -3,13 +3,13 @@ import {useSelector, useDispatch} from "react-redux";
 import {setMovies} from "../../redux/reducers/movies";
 import {setUser} from "../../redux/reducers/user";
 import {setToken} from "../../redux/reducers/token";
-// import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
 import {MoviesList} from "../movies-list/movies-list";
 import {LoginView} from "../login-view/login-view";
 import {SignupView} from "../signup-view/signup-view";
 import {NavigationBar} from "../nav-bar/nav-bar";
 import {ProfileView} from "../profile-view/profile-view";
+import {SimiliarMovies} from "../similiar-movies/similiar-movies"
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
@@ -132,7 +132,7 @@ export const MainView = () => {
               </>
             }
           />
-          <Route
+         <Route
             path="/movies/:movieID"
             element={
               <>
@@ -142,7 +142,10 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView />
+                    <MovieView addToFavorite={addToFavorite}
+                    removeFavorite={removeFavorite} />
+                    <SimiliarMovies   addToFavorite={addToFavorite}
+                    removeFavorite={removeFavorite} />
                   </Col>
                 )}
               </>
