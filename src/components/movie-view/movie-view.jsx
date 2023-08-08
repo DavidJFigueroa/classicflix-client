@@ -1,13 +1,14 @@
-import React from "react";
 import {Link} from "react-router-dom";
 import {useParams} from "react-router";
 import PropTypes from "prop-types";
 import {Card, Button, Row, Col, Container} from "react-bootstrap";
+import {useSelector} from "react-redux";
 
 import "./movie-view.scss";
 import "../../index.scss";
 
-export const MovieView = ({movies}) => {
+export const MovieView = () => {
+  const movies = useSelector((state) => state.movies.list);
   const {movieID} = useParams();
   const movie = movies.find((m) => m._id === movieID);
 
@@ -15,58 +16,29 @@ export const MovieView = ({movies}) => {
     <Container>
       <Row>
         <Col>
-          <Row>
-            <Col>
-              <Card.Img
-                className="d-block mx-auto"
-                id="movie-img"
-                src={movie.ImagePath}
-                alt="movie-img"
-              />
-            </Col>
-          </Row>
-
-          <Col>
-            <div style={{textAlign: "center"}}>
-              <span>
-                <b>
-                  <i>Title: </i>
-                </b>
-              </span>
-              <span>{movie.Title}</span>
-            </div>
-            <div id="div-description" style={{textAlign: "center"}}>
-              <span>
-                <b>
-                  <i>Description: </i>
-                </b>
-              </span>
-              <span>{movie.Description}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                {" "}
-                <b>
-                  <i>Director: </i>
-                </b>
-              </span>
-              <span>{movie.Director.Name}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <span>
-                {" "}
-                <b>
-                  <i>Genre: </i>
-                </b>
-              </span>
-              <span>{movie.Genre.Name}</span>
-            </div>
-            <div style={{textAlign: "center"}}>
-              <Link to={"/"}>
-                <Button id="backbutton">Back</Button>
-              </Link>
-            </div>
-          </Col>
+          <Card.Img
+            // className="d-block mx-auto"
+            id="movie-img"
+            src={movie.ImagePath}
+            alt="movie-img"
+          />
+          <div>
+            <h1>{movie.Title}</h1>
+          </div>
+          <div>
+            <h3>{movie.Director.Name}</h3>
+          </div>
+          <div>
+            <b>{movie.Genre.Name}</b>
+          </div>
+          <div id="div-description">
+            <span>{movie.Description}</span>
+          </div>
+          <div>
+            <Link to={"/"}>
+              <Button id="backbutton">Back</Button>
+            </Link>
+          </div>
         </Col>
       </Row>
     </Container>

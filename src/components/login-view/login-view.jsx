@@ -12,9 +12,14 @@ import {
 } from "react-bootstrap";
 import "./login-view.scss";
 
-export const LoginView = ({onLoggedIn}) => {
+import {useDispatch} from "react-redux";
+import {setUser} from "../../redux/reducers/user";
+import {setToken} from "../../redux/reducers/token";
+
+export const LoginView = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
   const handleSubmit = (event) => {
     // this prevents the default behavior of the form which is to reload the entire page
     event.preventDefault();
@@ -34,17 +39,20 @@ export const LoginView = ({onLoggedIn}) => {
       .then((response) => response.json())
       .then((data) => {
         if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user));
-          localStorage.setItem("token", data.token);
-          onLoggedIn(data.user, data.token);
+          dispatch(setUser(data.user));
+          dispatch(setToken(data.token));
+          // console.log(data);
+          // localStorage.setItem("user", JSON.stringify(data.user));
+          // localStorage.setItem("token", data.token);
         } else {
           alert("No such user");
         }
       })
-      .catch((e) => {
-        alert("Something went wrong");
+      .catch((error) => {
+        alert("Something went wrong:" + error);
       });
   };
+
   return (
     <Container>
       <Row>
@@ -87,8 +95,4 @@ export const LoginView = ({onLoggedIn}) => {
       </Row>
     </Container>
   );
-};
-
-LoginView.propTypes = {
-  onLoggedIn: PropTypes.func,
 };

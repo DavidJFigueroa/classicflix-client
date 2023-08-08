@@ -9,6 +9,7 @@ import {
   CardGroup,
   Col,
 } from "react-bootstrap";
+import "./signup-view.scss";
 
 export const SignupView = () => {
   const [username, setUsername] = useState("");

@@ -1,3 +1,16 @@
-.navbar-custom {
-  background-color: rgb(12, 107, 138) !important;
+.navbar {
+  background-color: rgb(12, 107, 138);
+  color: white;
+}
+
+.navbar-light .navbar-brand {
+  color: white !important;
+}
+
+.nav-link {
+  color: white !important;
+}
+
+.mylogo {
+  height: 50px;
 }

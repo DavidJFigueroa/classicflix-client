@@ -4,20 +4,30 @@ import Navbar from "react-bootstrap/Navbar";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import {Link} from "react-router-dom";
 import "./nav-bar.scss";
+import {useSelector, useDispatch} from "react-redux";
+import {setUser} from "../../redux/reducers/user";
+import MyLogo from "../../img/logo.png";
 
-export const NavigationBar = ({user, onLoggedOut}) => {
+export const NavigationBar = () => {
+  const user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   return (
     <>
       {[false].map((expand) => (
         <Navbar
-          bg="light"
-          key={expand}
-          expand={expand}
-          className="bg-body-tertiary mb-3">
+          // fluid
+          // bg="dark"
+          // key={expand}
+          // expand={expand}
+          className="navbar navbar-custom mb-3 text-white">
           <Container fluid>
+            <Navbar.Brand as={Link} to="/">
+              <img src={MyLogo} alt="mylogo" className="mylogo" />
+            </Navbar.Brand>
             <Navbar.Brand as={Link} to="/">
               Classic Flix
             </Navbar.Brand>
+
             <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
             <Navbar.Offcanvas
               backdrop={false}
@@ -50,7 +60,9 @@ export const NavigationBar = ({user, onLoggedOut}) => {
                       <Nav.Link as={Link} to="/users">
                         My Profile
                       </Nav.Link>
-                      <Nav.Link onClick={onLoggedOut}>Logout</Nav.Link>
+                      <Nav.Link onClick={() => dispatch(setUser(null))}>
+                        Logout
+                      </Nav.Link>
                     </>
                   )}
                 </Nav>

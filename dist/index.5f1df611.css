@@ -1,13 +1,4 @@
 @import "https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display&display=swap";
-img {
-  max-width: 244px;
-  max-height: 365px;
-}
-
-Button {
-  margin-bottom: 10px;
-}
-
 #movie-img {
   padding: 20px;
 }
@@ -13220,7 +13211,7 @@ body {
 }
 
 .btn {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .btn-primary {
@@ -13260,9 +13251,18 @@ body {
   height: 50px;
 }
 
-#logoutbutton {
-  width: 200px;
-  margin: 20px;
+img {
+  max-width: 244px;
+  max-height: 365px;
+}
+
+.search-form {
+  margin: auto auto 20px;
+  width: 50% !important;
+}
+
+.list-row {
+  margin-left: 0 !important;
 }
 
 :root, [data-bs-theme="light"] {
@@ -26600,4 +26600,4 @@ textarea.form-control-lg {
   }
 }
 
-/*# sourceMappingURL=index.e3f97e84.css.map */
+/*# sourceMappingURL=index.5f1df611.css.map */

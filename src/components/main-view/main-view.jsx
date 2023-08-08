@@ -1,6 +1,11 @@
 import {useState, useEffect} from "react";
-import {MovieCard} from "../movie-card/movie-card";
+import {useSelector, useDispatch} from "react-redux";
+import {setMovies} from "../../redux/reducers/movies";
+import {setUser} from "../../redux/reducers/user";
+import {setToken} from "../../redux/reducers/token";
+// import {MovieCard} from "../movie-card/movie-card";
 import {MovieView} from "../movie-view/movie-view";
+import {MoviesList} from "../movies-list/movies-list";
 import {LoginView} from "../login-view/login-view";
 import {SignupView} from "../signup-view/signup-view";
 import {NavigationBar} from "../nav-bar/nav-bar";
@@ -11,18 +16,15 @@ import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import "./main-view.scss";
 
 export const MainView = () => {
-  const storedUser = localStorage.getItem("user")
-    ? JSON.parse(localStorage.getItem("user"))
-    : null;
-  const storedToken = localStorage.getItem("token");
+  const movies = useSelector((state) => state.movies.list);
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
 
-  const [user, setUser] = useState(storedUser ? storedUser : null);
-  const [token, setToken] = useState(storedToken ? storedToken : null);
-  const [movies, setMovies] = useState([]);
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    setUser(null);
-    setToken(null);
+    dispatch(setUser(null));
+    dispatch(setToken(null));
     localStorage.clear();
   };
 
@@ -36,7 +38,8 @@ export const MainView = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        setMovies(data);
+        dispatch(setMovies(data));
+        console.log(data);
       })
       .catch((error) => {
         console.log("Error fetching movies:", error);
@@ -64,7 +67,7 @@ export const MainView = () => {
         }
       })
       .then((user) => {
-        setUser(user);
+        dispatch(setUser(user));
         localStorage.setItem("user", JSON.stringify(user));
         setIsFavorite(true);
       });
@@ -89,7 +92,7 @@ export const MainView = () => {
         }
       })
       .then((user) => {
-        setUser(user);
+        dispatch(setUser(user));
         localStorage.setItem("user", JSON.stringify(user));
         setIsFavorite(false);
       });
@@ -98,12 +101,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <Row>
-        <NavigationBar
-          user={user}
-          onLoggedOut={handleLogout}
-          movies={movies}
-          setMovies={setMovies}
-        />
+        <NavigationBar />
 
         <Routes>
           <Route
@@ -128,12 +126,7 @@ export const MainView = () => {
                   <Navigate to="/" />
                 ) : (
                   <Col md={5}>
-                    <LoginView
-                      onLoggedIn={(user, token) => {
-                        setUser(user);
-                        setToken(token);
-                      }}
-                    />
+                    <LoginView />
                   </Col>
                 )}
               </>
@@ -149,7 +142,7 @@ export const MainView = () => {
                   <Col>The list is empty!</Col>
                 ) : (
                   <Col md={8}>
-                    <MovieView movies={movies} />
+                    <MovieView />
                   </Col>
                 )}
               </>
@@ -160,31 +153,12 @@ export const MainView = () => {
             element={
               <>
                 {!user ? (
-                  <Navigate to="/signup" replace />
-                ) : movies.length === 0 ? (
-                  <Col>The list is empty!</Col>
+                  <Navigate to="/login" replace />
                 ) : (
-                  <>
-                    {movies.map((movie) => (
-                      <Col
-                        className="mb-5"
-                        xs={7}
-                        sm={6}
-                        md={4}
-                        lg={3}
-                        key={movie._id}>
-                        <MovieCard
-                          key={movie._id}
-                          movie={movie}
-                          movies={movies}
-                          user={user}
-                          setUser={setUser}
-                          addToFavorite={addToFavorite}
-                          removeFavorite={removeFavorite}
-                        />
-                      </Col>
-                    ))}
-                  </>
+                  <MoviesList
+                    addToFavorite={addToFavorite}
+                    removeFavorite={removeFavorite}
+                  />
                 )}
               </>
             }
@@ -196,10 +170,6 @@ export const MainView = () => {
                 {user ? (
                   <Col>
                     <ProfileView
-                      user={user}
-                      setUser={setUser}
-                      token={token}
-                      movies={movies}
                       removeFavorite={removeFavorite}
                       handleLogout={handleLogout}
                     />

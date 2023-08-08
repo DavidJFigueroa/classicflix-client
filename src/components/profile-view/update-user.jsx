@@ -1,15 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Button, Form, Row, Container, Card, Col} from "react-bootstrap";
-
+import {useSelector} from "react-redux";
 export function UpdateUser({
   handleSubmitUpdate,
-  user,
   setUsername,
   setEmail,
   setPassword,
   setBirthday,
 }) {
+  const user = useSelector((state) => state.user);
   return (
     <Card>
       <Card.Body>
@@ -86,6 +86,5 @@ export function UpdateUser({
 }
 
 UpdateUser.propTypes = {
-  user: PropTypes.object,
   handleSubmitUpdate: PropTypes.func,
 };
