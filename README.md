@@ -7,17 +7,17 @@ Classic Flix is a movie app created with react. Its states are handled with redu
 
 ## DEMO
 
-Link to the [App] (https://classicflix-djf.netlify.app/)
+Link to the [App](https://classicflix-djf.netlify.app/)
 
 ## API
 
-Fetched from this [API] (https://myflix-database-api-9ba401fe0e70.herokuapp.com), can be viewd in this [GitHubRepo] (https://github.com/DavidJFigueroa/movie_api)
+Fetched from this [API](https://myflix-database-api-9ba401fe0e70.herokuapp.com), can be viewd in this [GitHubRepo](https://github.com/DavidJFigueroa/movie_api)
 
 ## Build Information
 
 To build and run the project, use the following command in the project root directory:
 
-> parcel src/index.html
+`parcel src/index.html` 
 
 ##  Dependencies
 
