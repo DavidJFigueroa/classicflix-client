@@ -52928,10 +52928,6 @@ const LoginView = ()=>{
             if (data.user) {
                 dispatch((0, _user.setUser)(data.user));
                 dispatch((0, _token.setToken)(data.token));
-                JSON.stringify(data.user);
-            // console.log(data);
-            // localStorage.setItem("user", JSON.stringify(data.user));
-            // localStorage.setItem("token", data.token);
             } else alert("No such user");
         }).catch((error)=>{
             alert("Something went wrong:" + error);
@@ -52952,7 +52948,7 @@ const LoginView = ()=>{
                                     children: " Please login"
                                 }, void 0, false, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 64,
+                                    lineNumber: 60,
                                     columnNumber: 17
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form), {
@@ -52965,7 +52961,7 @@ const LoginView = ()=>{
                                                     children: "Username:"
                                                 }, void 0, false, {
                                                     fileName: "src/components/login-view/login-view.jsx",
-                                                    lineNumber: 67,
+                                                    lineNumber: 63,
                                                     columnNumber: 21
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -52977,13 +52973,13 @@ const LoginView = ()=>{
                                                     placeholder: "Enter a username"
                                                 }, void 0, false, {
                                                     fileName: "src/components/login-view/login-view.jsx",
-                                                    lineNumber: 68,
+                                                    lineNumber: 64,
                                                     columnNumber: 21
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/login-view/login-view.jsx",
-                                            lineNumber: 66,
+                                            lineNumber: 62,
                                             columnNumber: 19
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Group, {
@@ -52993,7 +52989,7 @@ const LoginView = ()=>{
                                                     children: "Password:"
                                                 }, void 0, false, {
                                                     fileName: "src/components/login-view/login-view.jsx",
-                                                    lineNumber: 79,
+                                                    lineNumber: 75,
                                                     columnNumber: 21
                                                 }, undefined),
                                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Form).Control, {
@@ -53004,13 +53000,13 @@ const LoginView = ()=>{
                                                     placeholder: "Enter a password"
                                                 }, void 0, false, {
                                                     fileName: "src/components/login-view/login-view.jsx",
-                                                    lineNumber: 80,
+                                                    lineNumber: 76,
                                                     columnNumber: 21
                                                 }, undefined)
                                             ]
                                         }, void 0, true, {
                                             fileName: "src/components/login-view/login-view.jsx",
-                                            lineNumber: 78,
+                                            lineNumber: 74,
                                             columnNumber: 19
                                         }, undefined),
                                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _reactBootstrap.Button), {
@@ -53020,44 +53016,44 @@ const LoginView = ()=>{
                                             children: "Submit"
                                         }, void 0, false, {
                                             fileName: "src/components/login-view/login-view.jsx",
-                                            lineNumber: 88,
+                                            lineNumber: 84,
                                             columnNumber: 19
                                         }, undefined)
                                     ]
                                 }, void 0, true, {
                                     fileName: "src/components/login-view/login-view.jsx",
-                                    lineNumber: 65,
+                                    lineNumber: 61,
                                     columnNumber: 17
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 63,
+                            lineNumber: 59,
                             columnNumber: 15
                         }, undefined)
                     }, void 0, false, {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 62,
+                        lineNumber: 58,
                         columnNumber: 13
                     }, undefined)
                 }, void 0, false, {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 61,
+                    lineNumber: 57,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 60,
+                lineNumber: 56,
                 columnNumber: 9
             }, undefined)
         }, void 0, false, {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 59,
+            lineNumber: 55,
             columnNumber: 7
         }, undefined)
     }, void 0, false, {
         fileName: "src/components/login-view/login-view.jsx",
-        lineNumber: 58,
+        lineNumber: 54,
         columnNumber: 5
     }, undefined);
 };
@@ -54165,7 +54161,7 @@ function SimiliarMovies({ removeFavorite, addToFavorite }) {
     const user = (0, _reactRedux.useSelector)((state)=>state.user);
     const { movieID } = (0, _reactRouter.useParams)();
     const selectedMovie = movies.find((item)=>item._id === movieID);
-    let similarMovies = movies.filter((movie)=>{
+    let similiarMovies = movies.filter((movie)=>{
         return movie._id !== movieID && movie.Genre.Name === selectedMovie.Genre.Name;
     });
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _jsxDevRuntime.Fragment), {
@@ -54178,21 +54174,21 @@ function SimiliarMovies({ removeFavorite, addToFavorite }) {
                         children: "SimiliarMovies:"
                     }, void 0, false, {
                         fileName: "src/components/similiar-movies/similiar-movies.jsx",
-                        lineNumber: 27,
+                        lineNumber: 28,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "src/components/similiar-movies/similiar-movies.jsx",
-                    lineNumber: 26,
+                    lineNumber: 27,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "src/components/similiar-movies/similiar-movies.jsx",
-                lineNumber: 25,
+                lineNumber: 26,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _rowDefault.default), {
-                children: similarMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
+                children: similiarMovies ? similiarMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         className: "mb-3",
                         xs: 7,
                         sm: 6,
@@ -54204,23 +54200,29 @@ function SimiliarMovies({ removeFavorite, addToFavorite }) {
                             addToFavorite: ()=>addToFavorite(movie)
                         }, movie._id, false, {
                             fileName: "src/components/similiar-movies/similiar-movies.jsx",
-                            lineNumber: 33,
-                            columnNumber: 13
+                            lineNumber: 35,
+                            columnNumber: 15
                         }, this)
                     }, movie._id, false, {
                         fileName: "src/components/similiar-movies/similiar-movies.jsx",
-                        lineNumber: 32,
-                        columnNumber: 11
-                    }, this))
+                        lineNumber: 34,
+                        columnNumber: 13
+                    }, this)) : /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+                    children: "No similiar Movies found"
+                }, void 0, false, {
+                    fileName: "src/components/similiar-movies/similiar-movies.jsx",
+                    lineNumber: 44,
+                    columnNumber: 11
+                }, this)
             }, void 0, false, {
                 fileName: "src/components/similiar-movies/similiar-movies.jsx",
-                lineNumber: 30,
+                lineNumber: 31,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(SimiliarMovies, "87QUr3KBzCJ3JZHUETjGSOQCpo8=", false, function() {
+_s(SimiliarMovies, "DYfpq0TbiVC7cG8Z+QAy0g11J4E=", false, function() {
     return [
         (0, _reactRedux.useSelector),
         (0, _reactRedux.useSelector),
