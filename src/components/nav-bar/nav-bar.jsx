@@ -14,12 +14,7 @@ export const NavigationBar = () => {
   return (
     <>
       {[false].map((expand) => (
-        <Navbar
-          // fluid
-          // bg="dark"
-          // key={expand}
-          // expand={expand}
-          className="navbar navbar-custom mb-3 text-white">
+        <Navbar className="navbar navbar-custom mb-3 text-white">
           <Container fluid>
             <Navbar.Brand as={Link} to="/">
               <img src={MyLogo} alt="mylogo" className="mylogo" />

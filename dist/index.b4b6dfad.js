@@ -27409,7 +27409,7 @@ $RefreshReg$(_c, "MainView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../../redux/reducers/movies":"l0qwl","../../redux/reducers/user":"e6tdF","../../redux/reducers/token":"4eTad","../movie-view/movie-view":"ggaUx","../movies-list/movies-list":"bPxKK","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../nav-bar/nav-bar":"04Psr","../profile-view/profile-view":"2vVqf","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","./main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","../similiar-movies/similiar-movies":"52zlH"}],"bdVon":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-redux":"bdVon","../../redux/reducers/movies":"l0qwl","../../redux/reducers/user":"e6tdF","../../redux/reducers/token":"4eTad","../movie-view/movie-view":"ggaUx","../movies-list/movies-list":"bPxKK","../login-view/login-view":"9YtA0","../signup-view/signup-view":"4OGiN","../nav-bar/nav-bar":"04Psr","../profile-view/profile-view":"2vVqf","../similiar-movies/similiar-movies":"52zlH","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","react-router-dom":"9xmpe","./main-view.scss":"eBaMl","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"bdVon":[function(require,module,exports) {
 // The primary entry point assumes we're working with standard ReactDOM/RN, but
 // older versions that do not include `useSyncExternalStore` (React 16.9 - 17.x).
 // Because of that, the useSyncExternalStore compat shim is needed.
@@ -52606,7 +52606,7 @@ const MoviesList = ({ addToFavorite, removeFavorite })=>{
                     columnNumber: 11
                 }, undefined) : filteredMovies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _colDefault.default), {
                         className: "mb-5",
-                        xs: 7,
+                        xs: 12,
                         sm: 6,
                         md: 4,
                         lg: 3,
@@ -53331,10 +53331,6 @@ const NavigationBar = ()=>{
         children: [
             false
         ].map((expand)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default), {
-                // fluid
-                // bg="dark"
-                // key={expand}
-                // expand={expand}
                 className: "navbar navbar-custom mb-3 text-white",
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _containerDefault.default), {
                     fluid: true,
@@ -53348,12 +53344,12 @@ const NavigationBar = ()=>{
                                 className: "mylogo"
                             }, void 0, false, {
                                 fileName: "src/components/nav-bar/nav-bar.jsx",
-                                lineNumber: 25,
+                                lineNumber: 20,
                                 columnNumber: 15
                             }, undefined)
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 24,
+                            lineNumber: 19,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Brand, {
@@ -53362,14 +53358,14 @@ const NavigationBar = ()=>{
                             children: "Classic Flix"
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 27,
+                            lineNumber: 22,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Toggle, {
                             "aria-controls": `offcanvasNavbar-expand-${expand}`
                         }, void 0, false, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 31,
+                            lineNumber: 26,
                             columnNumber: 13
                         }, undefined),
                         /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navbarDefault.default).Offcanvas, {
@@ -53385,12 +53381,12 @@ const NavigationBar = ()=>{
                                         children: "Menu"
                                     }, void 0, false, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                        lineNumber: 38,
+                                        lineNumber: 33,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                                    lineNumber: 37,
+                                    lineNumber: 32,
                                     columnNumber: 15
                                 }, undefined),
                                 /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _offcanvasDefault.default).Body, {
@@ -53405,7 +53401,7 @@ const NavigationBar = ()=>{
                                                         children: "Login"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 46,
+                                                        lineNumber: 41,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -53414,7 +53410,7 @@ const NavigationBar = ()=>{
                                                         children: "Signup"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 49,
+                                                        lineNumber: 44,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
@@ -53427,7 +53423,7 @@ const NavigationBar = ()=>{
                                                         children: "Home"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 57,
+                                                        lineNumber: 52,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -53436,7 +53432,7 @@ const NavigationBar = ()=>{
                                                         children: "My Profile"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 60,
+                                                        lineNumber: 55,
                                                         columnNumber: 23
                                                     }, undefined),
                                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _navDefault.default).Link, {
@@ -53444,7 +53440,7 @@ const NavigationBar = ()=>{
                                                         children: "Logout"
                                                     }, void 0, false, {
                                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                                        lineNumber: 63,
+                                                        lineNumber: 58,
                                                         columnNumber: 23
                                                     }, undefined)
                                                 ]
@@ -53452,24 +53448,24 @@ const NavigationBar = ()=>{
                                         ]
                                     }, void 0, true, {
                                         fileName: "src/components/nav-bar/nav-bar.jsx",
-                                        lineNumber: 43,
+                                        lineNumber: 38,
                                         columnNumber: 17
                                     }, undefined)
                                 }, void 0, false, {
                                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                                    lineNumber: 42,
+                                    lineNumber: 37,
                                     columnNumber: 15
                                 }, undefined)
                             ]
                         }, void 0, true, {
                             fileName: "src/components/nav-bar/nav-bar.jsx",
-                            lineNumber: 32,
+                            lineNumber: 27,
                             columnNumber: 13
                         }, undefined)
                     ]
                 }, void 0, true, {
                     fileName: "src/components/nav-bar/nav-bar.jsx",
-                    lineNumber: 23,
+                    lineNumber: 18,
                     columnNumber: 11
                 }, undefined)
             }, void 0, false, {
@@ -54131,7 +54127,7 @@ $RefreshReg$(_c, "UpdateUser");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"eBaMl":[function() {},{}],"52zlH":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","prop-types":"7wKI2","react-bootstrap":"3AD9A","react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"52zlH":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$ab02 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -54243,7 +54239,7 @@ $RefreshReg$(_c, "SimiliarMovies");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","../movie-card/movie-card":"bwuIu","prop-types":"7wKI2","react-redux":"bdVon","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru","react-router":"dbWyW","./similiar-movies.scss":"cIzrc"}],"cIzrc":[function() {},{}],"bDp2K":[function(require,module,exports) {
+},{"react/jsx-dev-runtime":"iTorj","react":"21dqq","react-bootstrap/Row":"cMC39","react-bootstrap/Col":"2L2I6","../movie-card/movie-card":"bwuIu","prop-types":"7wKI2","react-redux":"bdVon","react-router":"dbWyW","./similiar-movies.scss":"cIzrc","@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"km3Ru"}],"cIzrc":[function() {},{}],"eBaMl":[function() {},{}],"bDp2K":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "store", ()=>store);

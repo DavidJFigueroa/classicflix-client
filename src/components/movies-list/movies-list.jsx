@@ -23,8 +23,12 @@ export const MoviesList = ({addToFavorite, removeFavorite}) => {
           <Col>The list is empty!</Col>
         ) : (
           filteredMovies.map((movie) => (
-            <Col className="mb-5" xs={7} sm={6} md={4} lg={3} key={movie._id}>
-              <MovieCard movie={movie} addToFavorite={addToFavorite} removeFavorite={removeFavorite} />
+            <Col className="mb-5" xs={12} sm={6} md={4} lg={3} key={movie._id}>
+              <MovieCard
+                movie={movie}
+                addToFavorite={addToFavorite}
+                removeFavorite={removeFavorite}
+              />
             </Col>
           ))
         )}

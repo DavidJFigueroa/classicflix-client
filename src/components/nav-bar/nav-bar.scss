@@ -14,3 +14,17 @@
 .mylogo {
   height: 50px;
 }
+
+@media only screen and (max-width: 480px) {
+  .mylogo {
+    height: 25px;
+  }
+
+  .navbar-light .navbar-brand {
+    font-size: 16px !important;
+  }
+
+  .nav-link {
+    font-size: 12px !important;
+  }
+}
