@@ -4,6 +4,9 @@
 
 Classic Flix is a movie app created with react. Its states are handled with redux. It displays movie that are fetched from an API database. It lets users register, deregister, update their information, add and delete movies from their favorites
 
+![image](https://github-production-user-asset-6210df.s3.amazonaws.com/122026800/266654475-1aeab53c-109a-491c-a2d5-1e0b49588410.png)
+
+![image](https://github.com/DavidJFigueroa/classicflix-client/assets/122026800/75d63e23-97a8-4283-a308-e36c09eafc66.png)
 
 ## DEMO
 
